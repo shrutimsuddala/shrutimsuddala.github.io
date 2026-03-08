@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How to Write for SEO Without Losing Your Reader — Your Name</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Karla:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:#0e0e0f;--surface:#151516;--surface2:#1c1c1e;
+      --rule:#2a2a2e;--rule-lt:#333338;--ink:#e8e4dc;
+      --ink-mid:#a09a90;--ink-dim:#5c5850;--white:#f0ece4;--accent:#c8a96e;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Source Serif 4',Georgia,serif;background:var(--bg);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(14,14,15,0.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+    .nav-inner{max-width:800px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem}
+    .nav-back{font-family:'Karla',sans-serif;font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-mid);text-decoration:none;display:flex;align-items:center;gap:0.5rem;transition:color 0.2s}
+    .nav-back:hover{color:var(--accent)}
+    .nav-back::before{content:'←'}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--white);text-decoration:none;letter-spacing:0.03em}
+    .article-wrap{max-width:800px;margin:0 auto;padding:0 2rem}
+    .article-header{padding:8rem 0 3rem;border-bottom:1px solid var(--rule);margin-bottom:3rem}
+    .article-tag{font-family:'Karla',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:0.7rem;margin-bottom:1.4rem}
+    .article-tag::before{content:'';display:block;width:24px;height:1px;background:var(--accent)}
+    .article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:600;line-height:1.1;letter-spacing:-0.02em;color:var(--white);margin-bottom:1.2rem}
+    .article-title em{font-style:italic;font-weight:400;color:var(--accent)}
+    .article-deck{font-size:1.15rem;color:var(--ink-mid);font-weight:300;line-height:1.7;max-width:620px;margin-bottom:2rem}
+    .article-meta{display:flex;gap:2rem;flex-wrap:wrap;font-family:'Karla',sans-serif;font-size:0.75rem;color:var(--ink-dim);letter-spacing:0.06em}
+    .article-body{padding-bottom:6rem}
+    .article-body h2{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:600;color:var(--white);margin:2.8rem 0 1rem;letter-spacing:-0.01em}
+    .article-body h2 em{font-style:italic;font-weight:400;color:var(--accent)}
+    .article-body h3{font-family:'Karla',sans-serif;font-size:0.8rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin:2rem 0 0.8rem}
+    .article-body p{font-size:1rem;color:var(--ink-mid);font-weight:300;line-height:1.85;margin-bottom:1.4rem}
+    .article-body p strong{font-weight:600;color:var(--ink)}
+    .article-body ul,.article-body ol{margin:0 0 1.4rem 0;padding-left:0;display:flex;flex-direction:column;gap:0.5rem}
+    .article-body li{font-size:1rem;color:var(--ink-mid);font-weight:300;line-height:1.75;list-style:none;padding-left:1.4rem;position:relative}
+    .article-body li::before{content:'—';position:absolute;left:0;color:var(--accent);font-size:0.85rem}
+    .article-body ol{counter-reset:item}
+    .article-body ol li{counter-increment:item}
+    .article-body ol li::before{content:counter(item) '.';font-family:'Karla',sans-serif;font-size:0.75rem;font-weight:600;color:var(--accent)}
+    blockquote{margin:2.5rem 0;padding:1.5rem 2rem;border-left:2px solid var(--accent);background:var(--surface)}
+    blockquote p{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-style:italic;color:var(--white)!important;margin:0!important;line-height:1.6}
+    .article-divider{border:none;border-top:1px solid var(--rule);margin:3rem 0}
+    .takeaways{background:var(--surface);border:1px solid var(--rule-lt);border-left:2px solid var(--accent);padding:1.6rem 1.8rem;margin:2.5rem 0}
+    .takeaways-title{font-family:'Karla',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+    .article-footer{border-top:1px solid var(--rule);padding:2rem 0 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+    .footer-link{font-family:'Karla',sans-serif;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-mid);text-decoration:none;transition:color 0.2s}
+    .footer-link:hover{color:var(--accent)}
+    .footer-author{font-family:'Cormorant Garamond',serif;font-size:0.9rem;color:var(--ink-dim);font-style:italic}
+    @media(max-width:600px){.nav-inner,.article-wrap{padding-left:1.2rem;padding-right:1.2rem}.article-header{padding-top:6rem}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-back">Portfolio</a>
+    <a href="index.html" class="nav-logo">Your Name</a>
+  </div>
+</nav>
+
+<div class="article-wrap">
+
+  <header class="article-header">
+    <div class="article-tag">SEO · Long-Form Writing</div>
+    <h1 class="article-title">How to Write for SEO<br><em>Without Losing Your Reader</em></h1>
+    <p class="article-deck">
+      The tension between search engine optimisation and good writing is real — but
+      it doesn't have to be a trade-off. The best SEO content is simply well-structured,
+      genuinely useful writing. Here's how to achieve both.
+    </p>
+    <div class="article-meta">
+      <span>By Your Name</span>
+      <span>10 min read</span>
+      <span>SEO · Content Strategy</span>
+    </div>
+  </header>
+
+  <div class="article-body">
+
+    <p>
+      There is a version of SEO writing that reads like it was produced by an algorithm
+      for an algorithm — keyword-stuffed, structurally hollow, written to rank rather
+      than to inform. <strong>It is also increasingly ineffective.</strong> Search
+      engines have grown sophisticated enough to reward the same thing readers reward:
+      clear, credible, well-organised content that genuinely answers a question.
+    </p>
+
+    <p>
+      This article is for writers who want to understand SEO well enough to use it
+      as a structural tool — not a creative constraint. The goal is content that
+      performs in search and earns a reader's trust at the same time.
+    </p>
+
+    <div class="takeaways">
+      <div class="takeaways-title">Key Takeaways</div>
+      <ul>
+        <li>Keyword research is audience research — it tells you what questions real people are asking.</li>
+        <li>Structure (headings, clear paragraphs, logical flow) serves both SEO and reader comprehension.</li>
+        <li>Write to satisfy intent, not to hit a keyword count. Search engines measure engagement.</li>
+        <li>Long-form content ranks well when it is genuinely comprehensive — not padded.</li>
+        <li>Internal linking and clear CTAs are the most underused SEO tools available to writers.</li>
+      </ul>
+    </div>
+
+    <h2>Start With <em>Search Intent</em></h2>
+
+    <p>
+      Before you write a word, understand why someone would search for your topic.
+      Search intent — the underlying reason behind a query — falls into four categories:
+      informational (learning something), navigational (finding a specific site),
+      commercial (researching before a purchase), and transactional (ready to buy or act).
+    </p>
+
+    <p>
+      <strong>Most long-form content targets informational intent.</strong>
+      The reader wants to understand something. Your job is to give them the clearest,
+      most complete answer available — in a format that rewards reading rather than
+      just scanning. If you do that, the SEO largely takes care of itself.
+    </p>
+
+    <h2>Keyword Research as <em>Audience Research</em></h2>
+
+    <p>
+      Keywords are not just ranking targets — they are a window into how your audience
+      thinks and speaks. When you research what terms people use to find content like
+      yours, you learn their vocabulary, their questions, and the gaps in the existing
+      content landscape.
+    </p>
+
+    <h3>What to Look For</h3>
+    <ul>
+      <li><strong>Primary keyword</strong> — the main term your article targets, used naturally in the title, intro, and key headings.</li>
+      <li><strong>Secondary keywords</strong> — related terms and synonyms that appear naturally in well-written content on the topic.</li>
+      <li><strong>Long-tail keywords</strong> — specific, lower-volume phrases that signal high intent and are easier to rank for.</li>
+      <li><strong>"People Also Ask" questions</strong> — Google's own data on what readers want to know next.</li>
+    </ul>
+
+    <blockquote>
+      <p>"The best keyword strategy is simple: write the article you wish existed when
+      you first searched for the topic."</p>
+    </blockquote>
+
+    <hr class="article-divider"/>
+
+    <h2>Structure Is Not <em>a Compromise</em></h2>
+
+    <p>
+      Clear heading structure, short paragraphs, and logical section flow are often
+      dismissed as concessions to SEO. In reality, they are the hallmarks of good
+      non-fiction writing. A reader who can navigate your article efficiently is
+      more likely to read it fully, trust its authority, and share it — all of which
+      are signals that search engines weight heavily.
+    </p>
+
+    <h3>A Reliable Structure for Long-Form SEO Articles</h3>
+    <ol>
+      <li><strong>Introduction</strong> — establish the problem or question, signal why it matters, and preview what the article delivers.</li>
+      <li><strong>Key Takeaways</strong> — a scannable summary for readers who want the answer immediately. Increases time-on-page for those who stay.</li>
+      <li><strong>Body sections with H2 headings</strong> — each section answers a specific sub-question. Use H3 for sub-points within sections.</li>
+      <li><strong>Conclusion</strong> — summarise the key insight and provide a clear next step or call to action.</li>
+    </ol>
+
+    <h2>Writing Quality That <em>Search Engines Measure</em></h2>
+
+    <p>
+      Search engines have evolved significantly. Engagement metrics — time on page,
+      scroll depth, bounce rate — are proxies for content quality that influence
+      rankings. <strong>A technically optimised article that readers abandon immediately
+      will underperform a well-written article that holds attention.</strong>
+    </p>
+
+    <p>
+      Practical ways to improve both quality and SEO performance simultaneously:
+    </p>
+
+    <ul>
+      <li>Open with a sentence that earns the next sentence — avoid long preambles.</li>
+      <li>Vary sentence length. Short sentences create emphasis. Longer ones develop nuance.</li>
+      <li>Use specific examples, data points, and real scenarios rather than abstract generalities.</li>
+      <li>Link internally to related content on the same site — it reduces bounce rate and distributes authority.</li>
+      <li>End each section with a transition that pulls the reader into the next one.</li>
+    </ul>
+
+    <h2>The Myth of the <em>Word Count Target</em></h2>
+
+    <p>
+      Long-form content ranks well because comprehensive articles tend to be genuinely
+      more useful than shallow ones. But length itself is not a ranking factor.
+      A 3,000-word article padded with repetition and vague generalities will not
+      outperform a tight, precise 1,200-word article that fully satisfies a reader's intent.
+    </p>
+
+    <p>
+      Write until the topic is fully addressed. Then stop. If that takes 800 words,
+      800 words is the right length. If it genuinely takes 4,000, write 4,000.
+      The question to ask at every paragraph is: <strong>does this make the article
+      more useful, or just longer?</strong>
+    </p>
+
+  </div>
+
+  <div class="article-footer">
+    <a href="article3.html" class="footer-link">← Previous Article</a>
+    <span class="footer-author">Written by Your Name</span>
+    <a href="index.html" class="footer-link">Back to Portfolio →</a>
+  </div>
+
+</div>
+</body>
+</html>

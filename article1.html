@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>What to Do After a Data Breach — Your Name</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Karla:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:       #0e0e0f;
+      --surface:  #151516;
+      --surface2: #1c1c1e;
+      --rule:     #2a2a2e;
+      --rule-lt:  #333338;
+      --ink:      #e8e4dc;
+      --ink-mid:  #a09a90;
+      --ink-dim:  #5c5850;
+      --white:    #f0ece4;
+      --accent:   #c8a96e;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      background: var(--bg); color: var(--ink);
+      line-height: 1.7; -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(14,14,15,0.94); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-inner {
+      max-width: 800px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem;
+    }
+    .nav-back {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink-mid);
+      text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--accent); }
+    .nav-back::before { content: '←'; }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 600;
+      color: var(--white); text-decoration: none; letter-spacing: 0.03em;
+    }
+
+    /* ARTICLE */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 0 2rem; }
+
+    .article-header { padding: 8rem 0 3rem; border-bottom: 1px solid var(--rule); margin-bottom: 3rem; }
+    .article-tag {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent);
+      display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.4rem;
+    }
+    .article-tag::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
+    .article-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 600; line-height: 1.1; letter-spacing: -0.02em;
+      color: var(--white); margin-bottom: 1.2rem;
+    }
+    .article-title em { font-style: italic; font-weight: 400; color: var(--accent); }
+    .article-deck {
+      font-size: 1.15rem; color: var(--ink-mid); font-weight: 300;
+      line-height: 1.7; max-width: 620px; margin-bottom: 2rem;
+    }
+    .article-meta {
+      display: flex; gap: 2rem; flex-wrap: wrap;
+      font-family: 'Karla', sans-serif; font-size: 0.75rem;
+      color: var(--ink-dim); letter-spacing: 0.06em;
+    }
+    .article-meta span { display: flex; align-items: center; gap: 0.4rem; }
+
+    /* BODY */
+    .article-body { padding-bottom: 6rem; }
+    .article-body h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem; font-weight: 600; color: var(--white);
+      margin: 2.8rem 0 1rem; letter-spacing: -0.01em;
+    }
+    .article-body h2 em { font-style: italic; font-weight: 400; color: var(--accent); }
+    .article-body h3 {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent);
+      margin: 2rem 0 0.8rem;
+    }
+    .article-body p {
+      font-size: 1rem; color: var(--ink-mid); font-weight: 300;
+      line-height: 1.85; margin-bottom: 1.4rem;
+    }
+    .article-body p strong { font-weight: 600; color: var(--ink); }
+    .article-body ul, .article-body ol {
+      margin: 0 0 1.4rem 0; padding-left: 0;
+      display: flex; flex-direction: column; gap: 0.5rem;
+    }
+    .article-body li {
+      font-size: 1rem; color: var(--ink-mid); font-weight: 300;
+      line-height: 1.75; list-style: none;
+      padding-left: 1.4rem; position: relative;
+    }
+    .article-body li::before {
+      content: '—'; position: absolute; left: 0;
+      color: var(--accent); font-size: 0.85rem;
+    }
+    .article-body ol { counter-reset: item; }
+    .article-body ol li { counter-increment: item; }
+    .article-body ol li::before {
+      content: counter(item) '.';
+      font-family: 'Karla', sans-serif; font-size: 0.75rem;
+      font-weight: 600; color: var(--accent);
+    }
+
+    blockquote {
+      margin: 2.5rem 0; padding: 1.5rem 2rem;
+      border-left: 2px solid var(--accent);
+      background: var(--surface);
+    }
+    blockquote p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-style: italic;
+      color: var(--white) !important; margin: 0 !important;
+      line-height: 1.6;
+    }
+
+    .article-divider {
+      border: none; border-top: 1px solid var(--rule);
+      margin: 3rem 0;
+    }
+
+    /* KEY TAKEAWAYS BOX */
+    .takeaways {
+      background: var(--surface); border: 1px solid var(--rule-lt);
+      border-left: 2px solid var(--accent);
+      padding: 1.6rem 1.8rem; margin: 2.5rem 0;
+    }
+    .takeaways-title {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;
+    }
+
+    /* FOOTER NAV */
+    .article-footer {
+      border-top: 1px solid var(--rule);
+      padding: 2rem 0 4rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-link {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--ink-mid);
+      text-decoration: none; transition: color 0.2s;
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .footer-link:hover { color: var(--accent); }
+    .footer-author {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem; color: var(--ink-dim); font-style: italic;
+    }
+
+    @media (max-width: 600px) {
+      .nav-inner, .article-wrap { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .article-header { padding-top: 6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-back">Portfolio</a>
+    <a href="index.html" class="nav-logo">Your Name</a>
+  </div>
+</nav>
+
+<div class="article-wrap">
+
+  <header class="article-header">
+    <div class="article-tag">Data Breach · Litigation</div>
+    <h1 class="article-title">What to Do After a Data Breach:<br><em>A Consumer's Legal Guide</em></h1>
+    <p class="article-deck">
+      Millions of people are affected by data breaches every year, yet most don't know
+      their rights or how to act. This guide breaks down exactly what steps to take —
+      and what legal remedies may be available to you.
+    </p>
+    <div class="article-meta">
+      <span>By Your Name</span>
+      <span>8 min read</span>
+      <span>Data Breach Litigation</span>
+    </div>
+  </header>
+
+  <div class="article-body">
+
+    <p>
+      When a company fails to protect your personal data, the consequences can follow you
+      for years — from fraudulent credit applications to compromised medical records.
+      <strong>Understanding your rights as a consumer is the first step toward holding
+      negligent organisations accountable.</strong>
+    </p>
+
+    <p>
+      Data breach litigation has grown significantly over the past decade. Class action
+      lawsuits against major corporations have resulted in settlements worth hundreds of
+      millions of dollars. Yet most affected individuals never take action, either because
+      they don't know they have a claim or they believe the process is too complex to navigate.
+    </p>
+
+    <div class="takeaways">
+      <div class="takeaways-title">Key Takeaways</div>
+      <ul>
+        <li>You typically have a limited window to join a class action — act quickly once notified.</li>
+        <li>Document everything: breach notices, suspicious account activity, and any out-of-pocket losses.</li>
+        <li>You do not need to hire a lawyer individually to participate in most class action settlements.</li>
+        <li>Credit monitoring alone is not adequate compensation for serious data exposure.</li>
+      </ul>
+    </div>
+
+    <h2>Step One: <em>Confirm the Breach</em></h2>
+
+    <p>
+      Before taking any action, verify that the breach actually affected you. Companies
+      are legally required to notify affected individuals in most jurisdictions, but
+      notifications are sometimes delayed or misdirected. Check the company's official
+      website and cross-reference with public breach databases maintained by cybersecurity
+      researchers and government agencies.
+    </p>
+
+    <p>
+      Look for official communications via the email address or postal address you used
+      when registering with the company. Be cautious of phishing emails that impersonate
+      breach notification letters — a common tactic used by bad actors who monitor public
+      breach disclosures and exploit the confusion that follows.
+    </p>
+
+    <h2>Step Two: <em>Assess What Was Exposed</em></h2>
+
+    <p>
+      Not all data breaches carry the same risk. A breach involving only email addresses
+      and usernames carries far less legal and personal risk than one exposing financial
+      account numbers, Social Security numbers, health records, or passwords.
+      <strong>The nature of the exposed data will determine both your immediate risk
+      and your legal standing.</strong>
+    </p>
+
+    <h3>High-Risk Categories of Exposed Data</h3>
+    <ul>
+      <li>Financial account or payment card information</li>
+      <li>Government-issued identification numbers</li>
+      <li>Medical or health insurance records</li>
+      <li>Login credentials (username and password combinations)</li>
+      <li>Biometric data such as fingerprints or facial recognition data</li>
+      <li>Location history or precise geolocation data</li>
+    </ul>
+
+    <hr class="article-divider"/>
+
+    <h2>Step Three: <em>Document Everything</em></h2>
+
+    <p>
+      Legal claims require evidence. From the moment you receive a breach notification,
+      begin building a record. Save the original notification email or letter. Screenshot
+      any unusual account activity. Keep receipts for credit monitoring services or
+      identity protection tools you purchase as a result of the breach.
+    </p>
+
+    <blockquote>
+      <p>"The difference between a successful claim and a dismissed one often comes down
+      to documentation. Consumers who keep records are consumers who get compensated."</p>
+    </blockquote>
+
+    <p>
+      If you notice fraudulent transactions or new accounts opened in your name, file a
+      police report immediately. While law enforcement may not investigate individual
+      identity theft cases, the report serves as official documentation of harm — which
+      can be critical in litigation.
+    </p>
+
+    <h2>Step Four: <em>Understand Your Legal Options</em></h2>
+
+    <p>
+      Depending on your jurisdiction and the circumstances of the breach, you may have
+      several legal avenues available. In many countries, data protection regulations
+      give individuals the right to seek compensation for non-material damages —
+      meaning you may have a claim even if you haven't experienced measurable financial
+      loss yet.
+    </p>
+
+    <h3>Common Legal Pathways</h3>
+    <ol>
+      <li><strong>Class Action Lawsuits</strong> — joining a group of similarly affected individuals in a single suit against the breached organisation. Settlement funds are distributed among all claimants.</li>
+      <li><strong>Individual Civil Claims</strong> — pursuing a personal case if your losses are significant and specific enough to warrant individual representation.</li>
+      <li><strong>Regulatory Complaints</strong> — filing a complaint with your national or regional data protection authority. While this doesn't directly result in compensation, it can trigger investigations and regulatory fines that benefit the public.</li>
+      <li><strong>Small Claims Court</strong> — for modest, documentable financial losses, small claims proceedings are accessible without a lawyer in most jurisdictions.</li>
+    </ol>
+
+    <h2>What Compensation Can You Expect?</h2>
+
+    <p>
+      Settlement amounts in class actions vary enormously. High-profile breaches involving
+      tens of millions of records have produced settlements ranging from a few dollars per
+      claimant to several hundred dollars, depending on the severity of exposure and the
+      strength of the legal case. Cash payments, free credit monitoring, and identity
+      restoration services are the most common forms of relief offered.
+    </p>
+
+    <p>
+      It is worth noting that <strong>accepting a settlement typically means waiving
+      your right to sue the company independently</strong> over the same breach.
+      Read the terms carefully before submitting a claim form.
+    </p>
+
+    <hr class="article-divider"/>
+
+    <p>
+      Data breaches are not inevitable inconveniences to be absorbed in silence.
+      They represent failures of organisational responsibility — and the legal system
+      increasingly reflects that. Knowing your rights, acting promptly, and documenting
+      your experience are the foundations of any meaningful response.
+    </p>
+
+  </div>
+
+  <div class="article-footer">
+    <a href="index.html" class="footer-link">← Back to Portfolio</a>
+    <span class="footer-author">Written by Your Name</span>
+    <a href="article2.html" class="footer-link">Next Article →</a>
+  </div>
+
+</div>
+</body>
+</html>

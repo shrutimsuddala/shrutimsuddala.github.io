@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Name — Content Writer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Karla:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:        #0e0e0f;
+      --surface:   #151516;
+      --surface2:  #1c1c1e;
+      --rule:      #2a2a2e;
+      --rule-lt:   #333338;
+      --ink:       #e8e4dc;
+      --ink-mid:   #a09a90;
+      --ink-dim:   #5c5850;
+      --white:     #f0ece4;
+      --accent:    #c8a96e;
+      --accent-dk: #3a2e1a;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(14,14,15,0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem; font-weight: 600; letter-spacing: 0.04em;
+      color: var(--white); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink-mid);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── PAGE WRAP ── */
+    .page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+    /* ── HERO ── */
+    #profile { padding: 9rem 0 6rem; border-bottom: 1px solid var(--rule); }
+    .hero-grid {
+      display: grid; grid-template-columns: 1fr 320px;
+      gap: 5rem; align-items: end;
+    }
+    .hero-kicker {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--accent);
+      display: flex; align-items: center; gap: 0.8rem;
+      margin-bottom: 1.6rem;
+    }
+    .hero-kicker::before {
+      content: ''; display: block; width: 32px; height: 1px; background: var(--accent);
+    }
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 6vw, 6rem);
+      font-weight: 600; line-height: 1.0; letter-spacing: -0.01em;
+      color: var(--white); margin-bottom: 1.8rem;
+    }
+    .hero-name em { font-style: italic; font-weight: 400; color: var(--accent); }
+    .hero-summary {
+      font-size: 1.05rem; line-height: 1.85;
+      color: var(--ink-mid); max-width: 560px;
+      margin-bottom: 2.4rem; font-weight: 300;
+    }
+    .hero-summary strong { font-weight: 600; color: var(--ink); }
+    .hero-actions { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+    .btn {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; text-decoration: none;
+      padding: 0.8rem 1.8rem; border-radius: 2px;
+      transition: all 0.2s; display: inline-block;
+    }
+    .btn-primary { background: var(--accent); color: #0e0e0f; border: 1px solid var(--accent); }
+    .btn-primary:hover { background: #d4b87a; border-color: #d4b87a; }
+    .btn-ghost { background: transparent; color: var(--ink-mid); border: 1px solid var(--rule-lt); }
+    .btn-ghost:hover { border-color: var(--ink-mid); color: var(--white); }
+
+    /* Hero aside */
+    .profile-photo-box {
+      width: 100%; aspect-ratio: 3/4;
+      background: var(--surface2); border: 1px solid var(--rule-lt);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 0.8rem;
+      color: var(--ink-dim); font-family: 'Karla', sans-serif;
+      font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 1.4rem;
+    }
+    .photo-icon {
+      width: 44px; height: 44px;
+      border: 1px solid var(--rule-lt); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; color: var(--ink-dim);
+    }
+    .profile-meta { display: flex; flex-direction: column; }
+    .meta-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 0.65rem 0; border-bottom: 1px solid var(--rule);
+      font-family: 'Karla', sans-serif;
+    }
+    .meta-row:last-child { border-bottom: none; }
+    .meta-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-dim); }
+    .meta-value { font-size: 0.82rem; color: var(--ink-mid); font-weight: 500; }
+    .meta-available { color: var(--accent); font-weight: 600; }
+
+    /* ── SECTION COMMONS ── */
+    .section-wrap { padding: 5rem 0; border-bottom: 1px solid var(--rule); }
+    .section-header {
+      display: grid; grid-template-columns: 200px 1fr;
+      gap: 3rem; margin-bottom: 3.5rem;
+    }
+    .section-num {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--ink-dim); padding-top: 0.3rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 600; line-height: 1.15;
+      color: var(--white); letter-spacing: -0.01em;
+    }
+    .section-title em { font-style: italic; font-weight: 400; color: var(--accent); }
+    .section-intro {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.92rem; color: var(--ink-mid);
+      line-height: 1.75; max-width: 520px; margin-top: 0.6rem;
+    }
+
+    /* ── ARTICLES ── */
+    .articles-list { display: flex; flex-direction: column; }
+    .article-item {
+      display: grid; grid-template-columns: 60px 1fr auto;
+      gap: 0 2rem; align-items: start;
+      padding: 2rem 0; border-bottom: 1px solid var(--rule);
+      text-decoration: none; color: inherit;
+      position: relative;
+    }
+    .article-item::before {
+      content: ''; position: absolute; left: -1rem; top: 0; bottom: 0; width: 2px;
+      background: var(--accent); transform: scaleY(0); transform-origin: top;
+      transition: transform 0.25s ease;
+    }
+    .article-item:hover::before { transform: scaleY(1); }
+    .article-item:first-child { border-top: 1px solid var(--rule); }
+    .article-item:hover .article-title { color: var(--accent); }
+    .article-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85rem; color: var(--ink-dim); font-style: italic; padding-top: 0.15rem;
+    }
+    .article-tag {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.67rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem;
+    }
+    .article-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem; font-weight: 600; line-height: 1.3;
+      color: var(--white); margin-bottom: 0.45rem; transition: color 0.2s;
+    }
+    .article-desc {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.85rem; color: var(--ink-mid); line-height: 1.65;
+    }
+    .article-cta {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--ink-dim);
+      white-space: nowrap; padding-top: 0.2rem;
+      display: flex; align-items: center; gap: 0.3rem; transition: color 0.2s;
+    }
+    .article-item:hover .article-cta { color: var(--accent); }
+    .article-cta::after { content: '→'; }
+
+    /* ── SKILLS ── */
+    .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; }
+    .skill-block { padding: 2rem 2rem 2rem 0; border-bottom: 1px solid var(--rule); }
+    .skill-block:nth-child(2n) { padding-left: 2rem; padding-right: 0; border-left: 1px solid var(--rule); }
+    .skill-block:nth-last-child(-n+2) { border-bottom: none; }
+    .skill-block-title {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--ink-dim); margin-bottom: 1rem;
+    }
+    .skill-list { display: flex; flex-direction: column; gap: 0.35rem; }
+    .skill-item {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.95rem; color: var(--ink-mid);
+      font-weight: 300; padding-left: 1rem; position: relative;
+    }
+    .skill-item::before {
+      content: '—'; position: absolute; left: 0; color: var(--ink-dim); font-size: 0.8rem;
+    }
+    .skill-item.featured { font-weight: 500; color: var(--ink); }
+
+    /* Stats */
+    .stats-row {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--rule); border-left: 1px solid var(--rule);
+      margin-top: 3rem;
+    }
+    .stat-cell {
+      padding: 1.8rem 1.5rem;
+      border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+      background: var(--surface); transition: background 0.2s;
+    }
+    .stat-cell:hover { background: var(--surface2); }
+    .stat-figure {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem; font-weight: 600; line-height: 1;
+      color: var(--accent); margin-bottom: 0.3rem;
+    }
+    .stat-label { font-family: 'Karla', sans-serif; font-size: 0.75rem; color: var(--ink-dim); line-height: 1.45; }
+
+    /* ── EXPERIENCE & EDUCATION shared ── */
+    .exp-list { display: flex; flex-direction: column; }
+    .exp-item {
+      display: grid; grid-template-columns: 200px 1fr;
+      gap: 3rem; padding: 2.4rem 0; border-bottom: 1px solid var(--rule);
+    }
+    .exp-item:first-child { border-top: 1px solid var(--rule); }
+    .exp-period { font-family: 'Karla', sans-serif; font-size: 0.78rem; color: var(--ink-mid); margin-bottom: 0.2rem; }
+    .exp-duration { font-family: 'Karla', sans-serif; font-size: 0.72rem; color: var(--ink-dim); font-style: italic; }
+    .exp-role {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-weight: 600; color: var(--white); margin-bottom: 0.15rem;
+    }
+    .exp-org {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 1rem;
+    }
+    .exp-points { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.1rem; }
+    .exp-points li {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.92rem; color: var(--ink-mid); font-weight: 300; line-height: 1.65;
+      list-style: none; padding-left: 1.2rem; position: relative;
+    }
+    .exp-points li::before {
+      content: ''; position: absolute; left: 0; top: 0.65em;
+      width: 5px; height: 1px; background: var(--ink-dim);
+    }
+    .exp-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .chip {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--ink-dim);
+      padding: 0.22rem 0.65rem; border: 1px solid var(--rule-lt); border-radius: 1px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .chip:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── CONTACT ── */
+    .contact-body { max-width: 640px; }
+    .contact-statement {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+      font-weight: 400; font-style: italic;
+      line-height: 1.4; color: var(--white); margin-bottom: 1.8rem;
+    }
+    .contact-note {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.88rem; color: var(--ink-mid);
+      line-height: 1.7; margin-bottom: 2.2rem; max-width: 480px;
+    }
+    .contact-links { display: flex; flex-direction: column; }
+    .contact-link-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 0; border-bottom: 1px solid var(--rule);
+      text-decoration: none; color: var(--ink); transition: color 0.15s;
+    }
+    .contact-link-row:first-child { border-top: 1px solid var(--rule); }
+    .contact-link-row:hover { color: var(--accent); }
+    .contact-link-label {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--ink-dim); width: 80px; flex-shrink: 0;
+    }
+    .contact-link-value {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.95rem; font-weight: 300; flex: 1; padding-left: 1rem;
+      color: var(--ink-mid); transition: color 0.2s;
+    }
+    .contact-link-row:hover .contact-link-value { color: var(--accent); }
+    .contact-link-arrow { font-size: 0.8rem; color: var(--ink-dim); transition: transform 0.2s, color 0.2s; }
+    .contact-link-row:hover .contact-link-arrow { transform: translateX(4px); color: var(--accent); }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--rule); padding: 1.6rem 2rem; background: var(--surface); }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; color: var(--ink-dim); }
+    .footer-copy { font-family: 'Karla', sans-serif; font-size: 0.72rem; color: var(--ink-dim); letter-spacing: 0.05em; }
+
+    /* ── SCROLL REVEAL — visible by default, animates when JS works ── */
+    .reveal { opacity: 1; transform: none; transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.will-animate { opacity: 0; transform: translateY(16px); }
+    .reveal.will-animate.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-aside { display: grid; grid-template-columns: 160px 1fr; gap: 1.5rem; align-items: start; }
+      .profile-photo-box { aspect-ratio: 1/1; }
+      .section-header, .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .section-header { margin-bottom: 2rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .skill-block:nth-child(2n) { padding-left: 0; border-left: none; }
+      .skill-block:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule); }
+      .skill-block:last-child { border-bottom: none; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .article-item { grid-template-columns: 44px 1fr; }
+      .article-cta { display: none; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .nav-inner { padding: 1rem 1.2rem; }
+      .page-wrap { padding: 0 1.2rem; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#profile" class="nav-logo">Your Name</a>
+    <ul class="nav-links">
+      <li><a href="#profile">Profile</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- 01 PROFILE -->
+  <section id="profile" class="section-wrap" style="padding-top: 9rem;">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <div class="hero-kicker">Content Writer &amp; Researcher</div>
+        <h1 class="hero-name">Your<br><em>Name</em></h1>
+        <p class="hero-summary">
+          Research-driven content writer specialising in <strong>data breach litigation,
+          consumer rights, and cybersecurity</strong>. With a prior career in fraud
+          investigation, I bring forensic precision and analytical depth to every article —
+          translating complex legal and technical subject matter into clear, authoritative writing.
+        </p>
+        <div class="hero-actions">
+          <a href="#work" class="btn btn-primary">View Selected Work</a>
+          <a href="#contact" class="btn btn-ghost">Get In Touch</a>
+        </div>
+      </div>
+
+      <div class="hero-aside reveal">
+        <div class="profile-photo-box">
+          <div class="photo-icon">◯</div>
+          <span>Photo Placeholder</span>
+        </div>
+        <div class="profile-meta">
+          <div class="meta-row">
+            <span class="meta-label">Based in</span>
+            <span class="meta-value">India</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Speciality</span>
+            <span class="meta-value">Legal &amp; Cyber Content</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Experience</span>
+            <span class="meta-value">4+ Years</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Status</span>
+            <span class="meta-value meta-available">Available</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 SELECTED WORK -->
+  <section id="work" class="section-wrap">
+    <div class="section-header">
+      <div class="section-num">01 &nbsp;/&nbsp; Selected Work</div>
+      <div>
+        <h2 class="section-title">Published <em>Articles</em></h2>
+        <p class="section-intro">Long-form, SEO-optimised articles on data privacy, breach litigation, and consumer rights — written for informed, professional audiences.</p>
+      </div>
+    </div>
+
+    <div class="articles-list">
+
+      <a href="article1.html" class="article-item reveal">
+        <div class="article-num">01</div>
+        <div class="article-body">
+          <div class="article-tag">Data Breach · Litigation</div>
+          <div class="article-title">Your Article Title Goes Here</div>
+          <div class="article-desc">A 1–2 sentence description — what it covers, who it's for, and any notable outcomes such as search rankings or audience engagement.</div>
+        </div>
+        <div class="article-cta">Read</div>
+      </a>
+
+      <a href="article2.html" class="article-item reveal">
+        <div class="article-num">02</div>
+        <div class="article-body">
+          <div class="article-tag">Cybersecurity · Privacy</div>
+          <div class="article-title">Your Article Title Goes Here</div>
+          <div class="article-desc">A 1–2 sentence description — what it covers, who it's for, and any notable outcomes such as search rankings or audience engagement.</div>
+        </div>
+        <div class="article-cta">Read</div>
+      </a>
+
+      <a href="article3.html" class="article-item reveal">
+        <div class="article-num">03</div>
+        <div class="article-body">
+          <div class="article-tag">Consumer Rights</div>
+          <div class="article-title">Your Article Title Goes Here</div>
+          <div class="article-desc">A 1–2 sentence description — what it covers, who it's for, and any notable outcomes such as search rankings or audience engagement.</div>
+        </div>
+        <div class="article-cta">Read</div>
+      </a>
+
+      <a href="article4.html" class="article-item reveal">
+        <div class="article-num">04</div>
+        <div class="article-body">
+          <div class="article-tag">SEO · Long-Form</div>
+          <div class="article-title">Your Article Title Goes Here</div>
+          <div class="article-desc">A 1–2 sentence description — what it covers, who it's for, and any notable outcomes such as search rankings or audience engagement.</div>
+        </div>
+        <div class="article-cta">Read</div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- 02 SKILLS -->
+  <section id="skills" class="section-wrap">
+    <div class="section-header">
+      <div class="section-num">02 &nbsp;/&nbsp; Skills</div>
+      <div>
+        <h2 class="section-title">Areas of <em>Expertise</em></h2>
+      </div>
+    </div>
+
+    <div class="skills-grid reveal">
+      <div class="skill-block">
+        <div class="skill-block-title">Content &amp; Writing</div>
+        <ul class="skill-list">
+          <li class="skill-item featured">SEO Writing</li>
+          <li class="skill-item featured">Long-Form Articles</li>
+          <li class="skill-item">Keyword Optimisation</li>
+          <li class="skill-item">Blog Writing</li>
+          <li class="skill-item">Website Content</li>
+          <li class="skill-item">Social Media Content</li>
+          <li class="skill-item">Content Structuring</li>
+        </ul>
+      </div>
+      <div class="skill-block">
+        <div class="skill-block-title">Research &amp; Analysis</div>
+        <ul class="skill-list">
+          <li class="skill-item featured">Legal &amp; Regulatory Research</li>
+          <li class="skill-item featured">Investigative Writing</li>
+          <li class="skill-item">Fraud Pattern Analysis</li>
+          <li class="skill-item">Risk Assessment</li>
+          <li class="skill-item">Topic Research</li>
+        </ul>
+      </div>
+      <div class="skill-block">
+        <div class="skill-block-title">Subject Domains</div>
+        <ul class="skill-list">
+          <li class="skill-item featured">Data Breach Litigation</li>
+          <li class="skill-item featured">Cybersecurity</li>
+          <li class="skill-item">Consumer Rights &amp; Data Privacy</li>
+          <li class="skill-item">Financial Fraud</li>
+          <li class="skill-item">Nutrition &amp; Wellness</li>
+        </ul>
+      </div>
+      <div class="skill-block">
+        <div class="skill-block-title">Tools &amp; Platforms</div>
+        <ul class="skill-list">
+          <li class="skill-item featured">WordPress</li>
+          <li class="skill-item">Google Analytics</li>
+          <li class="skill-item">Canva</li>
+          <li class="skill-item">ChatGPT</li>
+          <li class="skill-item">Google Docs</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="stats-row reveal">
+      <div class="stat-cell">
+        <div class="stat-figure">3×</div>
+        <div class="stat-label">SEO articles published<br>per week, consistently</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-figure">4+</div>
+        <div class="stat-label">Years of writing &amp;<br>research experience</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-figure">2+</div>
+        <div class="stat-label">Years in fraud<br>investigation</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-figure">B.A.</div>
+        <div class="stat-label">English Literature —<br>academic writing foundation</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 EXPERIENCE -->
+  <section id="experience" class="section-wrap">
+    <div class="section-header">
+      <div class="section-num">03 &nbsp;/&nbsp; Experience</div>
+      <div>
+        <h2 class="section-title">Professional <em>History</em></h2>
+      </div>
+    </div>
+
+    <div class="exp-list">
+
+      <div class="exp-item reveal">
+        <div class="exp-left">
+          <div class="exp-period">June 2025 – Present</div>
+          <div class="exp-duration">10 Months</div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-role">Content Writer</div>
+          <div class="exp-org">Company Name</div>
+          <ul class="exp-points">
+            <li>Produce and publish 3 in-depth, SEO-optimised articles per week covering data breach litigation, consumer rights, and cybersecurity — translating complex legal concepts into accessible, reader-friendly content.</li>
+            <li>Conduct structured research on ongoing investigations, legal developments, and data privacy issues to ensure factual accuracy and relevance.</li>
+            <li>Manage end-to-end content publishing in WordPress, maintaining formatting consistency and brand voice adherence.</li>
+            <li>Create and schedule content across Twitter, Facebook, and Instagram, aligned with active investigation campaigns.</li>
+            <li>Collaborate with internal legal and research teams to align content messaging with case developments.</li>
+          </ul>
+          <div class="exp-chips">
+            <span class="chip">SEO Writing</span>
+            <span class="chip">WordPress</span>
+            <span class="chip">Legal Content</span>
+            <span class="chip">Social Media</span>
+            <span class="chip">Data Privacy</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-left">
+          <div class="exp-period">Mar 2023 – May 2025</div>
+          <div class="exp-duration">2 Years 3 Months</div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-role">Investigation Specialist</div>
+          <div class="exp-org">Company Name</div>
+          <ul class="exp-points">
+            <li>Conducted detailed investigations into phishing, social engineering, and financial fraud schemes using internal risk analysis tools.</li>
+            <li>Analysed fraud patterns, behavioural indicators, and risk signals to support early detection and mitigation of financial threats.</li>
+            <li>Documented investigative findings and contributed insights to improve fraud prevention processes and risk assessment frameworks.</li>
+            <li>Worked cross-functionally to strengthen security measures and reduce potential financial exposure.</li>
+          </ul>
+          <div class="exp-chips">
+            <span class="chip">Fraud Investigation</span>
+            <span class="chip">Risk Analysis</span>
+            <span class="chip">Documentation</span>
+            <span class="chip">Phishing</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-left">
+          <div class="exp-period">Jan 2021 – Jan 2022</div>
+          <div class="exp-duration">1 Year 1 Month</div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-role">Freelance Content Writer</div>
+          <div class="exp-org">Self-Employed</div>
+          <ul class="exp-points">
+            <li>Created blog content for a nutrition-focused website, adapting tone and structure to the target audience.</li>
+            <li>Developed storytelling-driven content and supported social media content planning initiatives.</li>
+            <li>Conducted independent research and structured long-form articles for improved readability and engagement.</li>
+          </ul>
+          <div class="exp-chips">
+            <span class="chip">Blog Writing</span>
+            <span class="chip">Long-Form</span>
+            <span class="chip">Nutrition</span>
+            <span class="chip">Social Media</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-left">
+          <div class="exp-period">Aug 2021 – Jan 2022</div>
+          <div class="exp-duration">6 Months</div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-role">Customer Service Associate</div>
+          <div class="exp-org">Company Name</div>
+          <ul class="exp-points">
+            <li>Managed customer escalations and resolved complex issues while maintaining high service standards.</li>
+            <li>Handled sensitive cases requiring careful communication, accuracy, and structured problem resolution.</li>
+          </ul>
+          <div class="exp-chips">
+            <span class="chip">Communication</span>
+            <span class="chip">Problem Solving</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 04 EDUCATION -->
+  <section id="education" class="section-wrap">
+    <div class="section-header">
+      <div class="section-num">04 &nbsp;/&nbsp; Education</div>
+      <div>
+        <h2 class="section-title">Academic <em>Background</em></h2>
+      </div>
+    </div>
+
+    <div class="exp-list">
+      <div class="exp-item reveal">
+        <div class="exp-left">
+          <div class="exp-period">July 2018 – June 2021</div>
+          <div class="exp-duration">3 Years</div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-role">Bachelor of Arts — English Literature</div>
+          <div class="exp-org">University Name</div>
+          <ul class="exp-points">
+            <li>Developed a strong foundation in close reading, critical analysis, and long-form written communication.</li>
+            <li>Built the academic writing discipline and research rigour that underpins professional content work today.</li>
+          </ul>
+          <div class="exp-chips">
+            <span class="chip">English Literature</span>
+            <span class="chip">Critical Analysis</span>
+            <span class="chip">Academic Writing</span>
+            <span class="chip">Research</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 CONTACT -->
+  <section id="contact" class="section-wrap" style="border-bottom: none; padding-bottom: 6rem;">
+    <div class="section-header">
+      <div class="section-num">05 &nbsp;/&nbsp; Contact</div>
+      <div>
+        <h2 class="section-title">Get In <em>Touch</em></h2>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-left: 232px; max-width: 620px;">
+      <p class="contact-statement">
+        "Open to freelance projects, full-time roles, and editorial collaborations."
+      </p>
+      <p class="contact-note">
+        I work with publications, agencies, and organisations that value well-researched,
+        professionally written content. If that sounds like you, I'd be glad to hear from you.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:randomemail@gmail.com" class="contact-link-row">
+          <span class="contact-link-label">Email</span>
+          <span class="contact-link-value">randomemail@gmail.com</span>
+          <span class="contact-link-arrow">→</span>
+        </a>
+        <a href="tel:+919999999999" class="contact-link-row">
+          <span class="contact-link-label">Phone</span>
+          <span class="contact-link-value">+91 99999 99999</span>
+          <span class="contact-link-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-wrap -->
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-name">Your Name — Content Writer</span>
+    <span class="footer-copy">© 2025</span>
+  </div>
+</footer>
+
+<script>
+  // Add animation only if IntersectionObserver works properly
+  if ('IntersectionObserver' in window) {
+    const els = document.querySelectorAll('.reveal');
+    els.forEach(el => el.classList.add('will-animate'));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.05 });
+    els.forEach(el => io.observe(el));
+  }
+</script>
+</body>
+</html>
