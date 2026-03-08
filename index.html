@@ -311,6 +311,25 @@
     .contact-link-arrow { font-size: 0.8rem; color: var(--ink-dim); transition: transform 0.2s, color 0.2s; }
     .contact-link-row:hover .contact-link-arrow { transform: translateX(4px); color: var(--accent); }
 
+    /* Copy email button */
+    .contact-copy-row {
+      cursor: pointer; user-select: none; position: relative;
+    }
+    .copy-icon {
+      color: var(--ink-dim); display: flex; align-items: center;
+      transition: color 0.2s;
+    }
+    .contact-copy-row:hover .copy-icon { color: var(--accent); }
+    .copy-confirm {
+      position: absolute; right: 0;
+      font-family: 'Karla', sans-serif;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em;
+      color: var(--accent); opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+    }
+    .copy-confirm.show { opacity: 1; }
+
     /* ── FOOTER ── */
     footer { border-top: 1px solid var(--rule); padding: 1.6rem 2rem; background: var(--surface); }
     .footer-inner {
@@ -695,16 +714,22 @@
         professionally written content. If that sounds like you, I'd be glad to hear from you.
       </p>
       <div class="contact-links">
-        <a href="shrutimsuddala@gmail.com" class="contact-link-row">
+        <div class="contact-link-row contact-copy-row" onclick="copyEmail(this)">
           <span class="contact-link-label">Email</span>
-          <span class="contact-link-value">shrutimsuddala@gmail.com</span>
-          <span class="contact-link-arrow">→</span>
-        </a>
-        <!-- <a href="tel:+919999999999" class="contact-link-row">
+          <span class="contact-link-value" id="email-value">shrutimsuddala@gmail.com</span>
+          <span class="copy-icon" title="Copy email">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </span>
+          <span class="copy-confirm">Copied!</span>
+        </div>
+        <a href="tel:+919999999999" class="contact-link-row" style="display:none;">
           <span class="contact-link-label">Phone</span>
           <span class="contact-link-value">+91 99999 99999</span>
           <span class="contact-link-arrow">→</span>
-        </a> -->
+        </a>
       </div>
     </div>
   </section>
@@ -718,10 +743,33 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Add animation only if IntersectionObserver works properly
+<script>
+  function copyEmail(row) {
+    const email = document.getElementById('email-value').textContent;
+    navigator.clipboard.writeText(email).then(() => {
+      const confirm = row.querySelector('.copy-confirm');
+      const icon = row.querySelector('.copy-icon');
+      confirm.classList.add('show');
+      icon.style.opacity = '0';
+      setTimeout(() => {
+        confirm.classList.remove('show');
+        icon.style.opacity = '1';
+      }, 2000);
+    });
+  }
+
+  // Scroll reveal
   if ('IntersectionObserver' in window) {
     const els = document.querySelectorAll('.reveal');
     els.forEach(el => el.classList.add('will-animate'));
     const io = new IntersectionObserver((entries) => {
-      entri
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.05 });
+    els.forEach(el => io.observe(el));
+  }
+</script>
