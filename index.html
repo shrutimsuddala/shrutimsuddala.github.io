@@ -13,7 +13,7 @@
   <meta name="twitter:title" content="Shruti Suddala — Content Writer &amp; Researcher"/>
   <meta name="twitter:description" content="Research-driven content writer specialising in data breach litigation, consumer rights, and cybersecurity."/>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>S</text></svg>"/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Karla:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Karla:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
   <style>
     :root {
       --bg:        #0e0e0f;
@@ -429,7 +429,7 @@
     }
     .contact-links { display: flex; flex-direction: column; }
     .contact-link-row {
-      display: flex; justify-content: space-between; align-items: center;
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
       padding: 1rem 0; border-bottom: 1px solid var(--rule);
       text-decoration: none; color: var(--ink); transition: color 0.15s;
     }
@@ -487,15 +487,18 @@
       .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .hero-aside { display: grid; grid-template-columns: 160px 1fr; gap: 1.5rem; align-items: start; }
       .profile-photo-box { aspect-ratio: 1/1; }
-      .section-header, .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .section-header, .exp-item { grid-template-columns: 1fr; gap: 0.8rem; }
       .section-header { margin-bottom: 2rem; }
       .skills-grid { grid-template-columns: 1fr; }
       .skill-block:nth-child(2n) { padding-left: 0; border-left: none; }
       .skill-block:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule); }
       .skill-block:last-child { border-bottom: none; }
       .stats-row { grid-template-columns: 1fr 1fr; }
+      .stat-figure { font-size: 2.2rem; }
       .article-item { grid-template-columns: 44px 1fr; }
       .article-cta { display: none; }
+      .contact-wrap-indent { margin-left: 0 !important; }
+      .footer-inner { flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
     }
     @media (max-width: 600px) {
       .nav-links { display: none; }
@@ -503,8 +506,11 @@
       .mobile-menu { display: flex; }
       .nav-inner { padding: 1rem 1.2rem; }
       .page-wrap { padding: 0 1.2rem; }
+      .hero-aside { grid-template-columns: 1fr; }
+      .profile-photo-box { aspect-ratio: 3/4; max-width: 200px; margin: 0 auto; }
       .stats-row { grid-template-columns: 1fr 1fr; }
-      .contact-wrap-indent { margin-left: 0 !important; }
+      .stat-figure { font-size: 1.8rem; }
+      .copy-card-headline { font-size: 1.15rem; }
     }
   </style>
 </head>
@@ -815,7 +821,6 @@
       <div class="exp-item reveal">
         <div class="exp-left">
           <div class="exp-period">June 2025 – Present</div>
-          <div class="exp-duration">10 Months</div>
         </div>
         <div class="exp-right">
           <div class="exp-role">Content Writer</div>

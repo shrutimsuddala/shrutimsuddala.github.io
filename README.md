@@ -6,8 +6,9 @@ Personal portfolio for **Shruti Suddala** — Content Writer & Researcher specia
 
 ```
 index.html            Main portfolio page
+css/article.css       Shared styles for article pages
 articles/             Published article samples
-copywriting/          Copywriting pieces (coming soon)
+404.html              Custom 404 page
 ```
 
 ## Live Site
