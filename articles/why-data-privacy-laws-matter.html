@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Why Data Privacy Laws Matter for Consumers — Shruti Suddala</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Karla:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:       #0e0e0f;
+      --surface:  #151516;
+      --surface2: #1c1c1e;
+      --rule:     #2a2a2e;
+      --rule-lt:  #333338;
+      --ink:      #e8e4dc;
+      --ink-mid:  #a09a90;
+      --ink-dim:  #5c5850;
+      --white:    #f0ece4;
+      --accent:   #c8a96e;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      background: var(--bg); color: var(--ink);
+      line-height: 1.7; -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(14,14,15,0.94); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-inner {
+      max-width: 800px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem;
+    }
+    .nav-back {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink-mid);
+      text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--accent); }
+    .nav-back::before { content: '\2190'; }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 600;
+      color: var(--white); text-decoration: none; letter-spacing: 0.03em;
+    }
+
+    /* ARTICLE */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 0 2rem; }
+
+    .article-header { padding: 8rem 0 3rem; border-bottom: 1px solid var(--rule); margin-bottom: 3rem; }
+    .article-tag {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent);
+      display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.4rem;
+    }
+    .article-tag::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
+    .article-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 600; line-height: 1.1; letter-spacing: -0.02em;
+      color: var(--white); margin-bottom: 1.2rem;
+    }
+    .article-title em { font-style: italic; font-weight: 400; color: var(--accent); }
+    .article-deck {
+      font-size: 1.15rem; color: var(--ink-mid); font-weight: 300;
+      line-height: 1.7; max-width: 620px; margin-bottom: 2rem;
+      text-align: justify;
+    }
+    .article-meta {
+      display: flex; gap: 2rem; flex-wrap: wrap;
+      font-family: 'Karla', sans-serif; font-size: 0.75rem;
+      color: var(--ink-dim); letter-spacing: 0.06em;
+    }
+    .article-meta span { display: flex; align-items: center; gap: 0.4rem; }
+
+    /* BODY */
+    .article-body { padding-bottom: 6rem; }
+    .article-body h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem; font-weight: 600; color: var(--white);
+      margin: 2.8rem 0 1rem; letter-spacing: -0.01em;
+    }
+    .article-body h2 em { font-style: italic; font-weight: 400; color: var(--accent); }
+    .article-body h3 {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent);
+      margin: 2rem 0 0.8rem;
+    }
+    .article-body p {
+      font-size: 1rem; color: var(--ink-mid); font-weight: 300;
+      line-height: 1.85; margin-bottom: 1.4rem;
+      text-align: justify;
+    }
+    .article-body p strong { font-weight: 600; color: var(--ink); }
+    .article-body ul, .article-body ol {
+      margin: 0 0 1.4rem 0; padding-left: 0;
+      display: flex; flex-direction: column; gap: 0.5rem;
+    }
+    .article-body li {
+      font-size: 1rem; color: var(--ink-mid); font-weight: 300;
+      line-height: 1.75; list-style: none;
+      padding-left: 1.4rem; position: relative;
+      text-align: justify;
+    }
+    .article-body li::before {
+      content: '\2014'; position: absolute; left: 0;
+      color: var(--accent); font-size: 0.85rem;
+    }
+
+    blockquote {
+      margin: 2.5rem 0; padding: 1.5rem 2rem;
+      border-left: 2px solid var(--accent);
+      background: var(--surface);
+    }
+    blockquote p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-style: italic;
+      color: var(--white) !important; margin: 0 !important;
+      line-height: 1.6;
+    }
+
+    .article-divider {
+      border: none; border-top: 1px solid var(--rule);
+      margin: 3rem 0;
+    }
+
+    /* KEY TAKEAWAYS BOX */
+    .takeaways {
+      background: var(--surface); border: 1px solid var(--rule-lt);
+      border-left: 2px solid var(--accent);
+      padding: 1.6rem 1.8rem; margin: 2.5rem 0;
+    }
+    .takeaways-title {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;
+    }
+
+    /* FOOTER NAV */
+    .article-footer {
+      border-top: 1px solid var(--rule);
+      padding: 2rem 0 4rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-link {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--ink-mid);
+      text-decoration: none; transition: color 0.2s;
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .footer-link:hover { color: var(--accent); }
+    .footer-author {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem; color: var(--ink-dim); font-style: italic;
+    }
+
+    @media (max-width: 600px) {
+      .nav-inner, .article-wrap { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .article-header { padding-top: 6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-back">Portfolio</a>
+    <a href="../index.html" class="nav-logo">Shruti Suddala</a>
+  </div>
+</nav>
+
+<div class="article-wrap">
+
+  <header class="article-header">
+    <div class="article-tag">Data Privacy &middot; Consumer Rights</div>
+    <h1 class="article-title">Why Data Privacy Laws<br><em>Matter for Consumers</em></h1>
+    <p class="article-deck">
+      Data privacy laws exist to protect consumers, giving you control over your personal
+      information and ensuring that companies are held accountable for keeping your data safe.
+    </p>
+    <div class="article-meta">
+      <span>By Shruti Suddala</span>
+      <span>5 min read</span>
+      <span>Data Privacy</span>
+    </div>
+  </header>
+
+  <div class="article-body">
+
+    <p>
+      You wake up, groggy and running late for work. The coffee machine sputters in the background, reminding you of the day ahead. But before you even start your morning routine, an alarming email pops up: "Your personal information has been hacked." Suddenly, your focus shifts from being late or missing your caffeine fix to panic wondering where you've signed up in the past few days, what details have been exposed, and who now has access to your life. This nightmare scenario illustrates exactly why data privacy laws are so critical. They exist to protect consumers, giving you control over your personal information and ensuring that companies are held accountable for keeping your data safe. Without them, moments like these could become all too common.
+    </p>
+
+    <h2>Understanding <em>Data Privacy Laws</em></h2>
+
+    <p>
+      Data privacy laws are legal rules that govern how personal data is collected, used, stored, shared, and protected. They give individuals rights over their information and require organizations to handle data responsibly and transparently. Examples include the General Data Protection Regulation (GDPR) in the European Union and the California Privacy Rights Act (CPRA), which expands consumer protections in that U.S. state. Laws like these empower people to access, correct, delete, or limit use of their personal information, and place strict obligations on how organizations manage data.
+    </p>
+
+    <h2>How Consumer Data <em>Is Collected and Used</em></h2>
+
+    <p>
+      Every digital action signing up for apps, browsing websites, using social media, or shopping online results in data being collected. Names, contact details, location history, purchase patterns, or even preferences can be gathered and stored. Companies use this information for improving services, personalizing content, and targeted advertising but without proper rules, this can easily turn into surveillance or unwanted profiling. Consumers often don't know what data is collected, where it goes, and how long it's retained, which creates unease and a feeling of lost control.
+    </p>
+
+    <hr class="article-divider"/>
+
+    <h2>The Risks When <em>Privacy Isn't Protected</em></h2>
+
+    <p>
+      Without strong laws, personal data becomes vulnerable to misuse, exploitation, and breaches. Hackers can steal sensitive details leading to financial fraud or identity theft, and companies might share or sell personal information without clarity. When data privacy isn't enforced, this can also result in emotional distress, loss of trust, and reputational harm, affecting individuals' everyday lives and even their careers. Privacy violations harm both personal security and mental well-being, making legal protections a necessity, not just a convenience.
+    </p>
+
+    <hr class="article-divider"/>
+
+    <h2>How Data Privacy Laws <em>Help Consumers</em></h2>
+
+    <p>
+      Data privacy laws matter because they:
+    </p>
+
+    <ul>
+      <li><strong>Give you control:</strong> You have rights to know what data companies collect about you and request its deletion or correction under laws like GDPR and CPRA.</li>
+      <li><strong>Ensure transparency:</strong> Companies must disclose how they use your information, increasing trust and accountability.</li>
+      <li><strong>Protect against misuse:</strong> If a company fails to follow rules, regulators can fine them or enforce changes. For example, under GDPR, violations may lead to fines of up to 4% of global revenue.</li>
+      <li><strong>Encourage better practices:</strong> Privacy regulations push businesses to adopt safer data handling and limit unnecessary data collection.</li>
+    </ul>
+
+    <hr class="article-divider"/>
+
+    <h2>Examples of Legal Frameworks <em>Around the World</em></h2>
+
+    <p>
+      Different regions have introduced legal frameworks to protect personal data and ensure consumer privacy:
+    </p>
+
+    <h3>GDPR (European Union)</h3>
+    <p>
+      One of the strictest privacy laws globally, GDPR gives individuals rights to access, correct, delete, or restrict the use of their data. It applies to any company handling EU citizens' information and imposes fines of up to 4% of global revenue for violations.
+    </p>
+
+    <h3>CPRA (California, USA)</h3>
+    <p>
+      Building on the CCPA, the California Privacy Rights Act gives residents greater control over sensitive data, including access, correction, deletion, and restriction. It also establishes a regulatory body to enforce compliance.
+    </p>
+
+    <h3>Emerging Laws Elsewhere</h3>
+    <p>
+      Countries like Brazil (LGPD), Canada (PIPEDA), and India (DPDPA) are introducing their own privacy laws, reflecting a global trend to protect consumer data and hold organizations accountable.
+    </p>
+
+    <hr class="article-divider"/>
+
+    <h2>What Consumers Can Do <em>to Protect Themselves</em></h2>
+
+    <p>
+      Even with laws in place, consumers benefit from proactive steps, such as:
+    </p>
+
+    <ul>
+      <li>Review privacy settings on apps and services.</li>
+      <li>Use strong passwords and multifactor authentication.</li>
+      <li>Limit app permissions and be mindful of what personal information you share.</li>
+      <li>Exercise your legal rights to access, delete, or restrict data through company privacy tools.</li>
+    </ul>
+
+    <hr class="article-divider"/>
+
+    <h2>Conclusion: <em>Empowering Consumers in the Digital Age</em></h2>
+
+    <p>
+      In a world where personal data drives everything from shopping to social media to financial services, data privacy laws are more important than ever. They are not just legal technicalities, they are the mechanisms that protect your identity, autonomy, and digital freedom. By knowing your rights and understanding how laws work to safeguard your data, you can confidently engage with digital technologies without surrendering control over your personal information.
+    </p>
+
+  </div>
+
+  <div class="article-footer">
+    <a href="what-to-do-after-data-breach.html" class="footer-link">&larr; Previous Article</a>
+    <span class="footer-author">Written by Shruti Suddala</span>
+    <a href="../index.html" class="footer-link">Back to Portfolio &rarr;</a>
+  </div>
+
+</div>
+</body>
+</html>

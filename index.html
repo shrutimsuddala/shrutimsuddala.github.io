@@ -3,7 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Shruti Suddala</title>
+  <title>Shruti Suddala — Content Writer &amp; Researcher</title>
+  <meta name="description" content="Portfolio of Shruti Suddala — research-driven content writer specialising in data breach litigation, consumer rights, and cybersecurity. SEO-optimised articles, investigative writing, and legal content."/>
+  <meta property="og:title" content="Shruti Suddala — Content Writer &amp; Researcher"/>
+  <meta property="og:description" content="Research-driven content writer specialising in data breach litigation, consumer rights, and cybersecurity. Explore published articles and professional experience."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://shrutimsuddala.github.io/"/>
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="Shruti Suddala — Content Writer &amp; Researcher"/>
+  <meta name="twitter:description" content="Research-driven content writer specialising in data breach litigation, consumer rights, and cybersecurity."/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>S</text></svg>"/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Karla:wght@400;500;600&display=swap" rel="stylesheet"/>
   <style>
     :root {
@@ -131,6 +140,7 @@
       font-size: 1.05rem; line-height: 1.85;
       color: var(--ink-mid); max-width: 560px;
       margin-bottom: 2.4rem; font-weight: 300;
+      text-align: justify;
     }
     .hero-summary strong { font-weight: 600; color: var(--ink); }
     .hero-actions { display: flex; gap: 1.2rem; flex-wrap: wrap; }
@@ -195,6 +205,7 @@
       font-family: 'Karla', sans-serif;
       font-size: 0.92rem; color: var(--ink-mid);
       line-height: 1.75; max-width: 520px; margin-top: 0.6rem;
+      text-align: justify;
     }
 
     /* ── ARTICLES ── */
@@ -212,7 +223,7 @@
       transition: transform 0.25s ease;
     }
     .article-item:hover::before { transform: scaleY(1); }
-    .article-item:first-child { border-top: 1px solid var(--rule); }
+    .article-item:first-child { border-top: none; }
     .article-item:hover .article-title { color: var(--accent); }
     .article-num {
       font-family: 'Cormorant Garamond', serif;
@@ -231,6 +242,7 @@
     .article-desc {
       font-family: 'Karla', sans-serif;
       font-size: 0.85rem; color: var(--ink-mid); line-height: 1.65;
+      text-align: justify;
     }
     .article-cta {
       font-family: 'Karla', sans-serif;
@@ -241,6 +253,86 @@
     }
     .article-item:hover .article-cta { color: var(--accent); }
     .article-cta::after { content: '→'; }
+
+    /* ── WORK SUBSECTION ── */
+    .work-subsection {
+      margin-bottom: 3rem;
+    }
+    .work-subsection:last-child { margin-bottom: 0; }
+    .work-sub-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem; font-weight: 600;
+      color: var(--white); letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .work-sub-label em { font-style: italic; font-weight: 400; color: var(--accent); }
+
+    /* ── COPYWRITING CARDS ── */
+    .copy-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+    .copy-card {
+      background: var(--surface); border: 1px solid var(--rule);
+      padding: 1.8rem; position: relative;
+      transition: border-color 0.25s, background 0.25s;
+    }
+    .copy-card:hover { border-color: var(--rule-lt); background: var(--surface2); }
+    .copy-card-brand {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .copy-card-brand::before {
+      content: ''; width: 16px; height: 1px; background: var(--accent);
+    }
+    .copy-card-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem; font-weight: 600; line-height: 1.25;
+      color: var(--white); margin-bottom: 0.5rem;
+    }
+    .copy-card-sub {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.88rem; font-weight: 300; font-style: italic;
+      color: var(--ink-mid); line-height: 1.6; margin-bottom: 1.2rem;
+    }
+    .copy-card-section {
+      margin-bottom: 0.8rem;
+    }
+    .copy-card-section:last-of-type { margin-bottom: 0; }
+    .copy-card-label {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink-dim);
+      margin-bottom: 0.25rem;
+    }
+    .copy-card-text {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.88rem; font-weight: 300; color: var(--ink-mid);
+      line-height: 1.65; text-align: justify;
+    }
+    .copy-card-cta {
+      margin-top: 1.2rem; padding-top: 1rem;
+      border-top: 1px solid var(--rule);
+    }
+    .copy-card-cta-label {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.58rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink-dim);
+      margin-bottom: 0.3rem;
+    }
+    .copy-card-cta-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; font-weight: 600; font-style: italic;
+      color: var(--accent);
+    }
+    @media (max-width: 860px) {
+      .copy-grid { grid-template-columns: 1fr; }
+    }
 
     /* ── SKILLS ── */
     .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; }
@@ -304,6 +396,7 @@
     .exp-points li {
       font-family: 'Source Serif 4', serif;
       font-size: 0.92rem; color: var(--ink-mid); font-weight: 300; line-height: 1.65;
+      text-align: justify;
       list-style: none; padding-left: 1.2rem; position: relative;
     }
     .exp-points li::before {
@@ -332,6 +425,7 @@
       font-family: 'Karla', sans-serif;
       font-size: 0.88rem; color: var(--ink-mid);
       line-height: 1.7; margin-bottom: 2.2rem; max-width: 480px;
+      text-align: justify;
     }
     .contact-links { display: flex; flex-direction: column; }
     .contact-link-row {
@@ -498,54 +592,139 @@
     <div class="section-header">
       <div class="section-num">01 &nbsp;/&nbsp; Selected Work</div>
       <div>
-        <h2 class="section-title">Published <em>Articles</em></h2>
-        <p class="section-intro">Long-form, SEO-optimised articles on data privacy, breach litigation, and consumer rights — written for informed, professional audiences.</p>
+        <h2 class="section-title">Selected <em>Work</em></h2>
+        <p class="section-intro">Long-form articles and short-form copywriting — showcasing range across research-driven content and persuasive brand copy.</p>
       </div>
     </div>
 
-    <div class="articles-list">
+    <!-- ARTICLES SUBSECTION -->
+    <div class="work-subsection">
+      <div class="work-sub-label">Long-Form <em>Articles</em></div>
+      <div class="articles-list">
 
-      <a href="article1.html" class="article-item reveal">
-        <div class="article-num">01</div>
-        <div class="article-body">
-          <div class="article-tag">Data Breach · Litigation</div>
-          <div class="article-title">What to Do After a Data Breach: A Consumer's Legal Guide</div>
-          <div class="article-desc">Millions of people are affected by data breaches every year yet most don't know their rights. This guide breaks down the exact steps to take — and what legal remedies may be available to you.</div>
-        </div>
-        <div class="article-cta">Read</div>
-      </a>
+        <a href="articles/how-phishing-scams-work.html" class="article-item reveal">
+          <div class="article-num">01</div>
+          <div class="article-body">
+            <div class="article-tag">Cybersecurity · Phishing</div>
+            <div class="article-title">How Phishing Scams Work and How to Protect Yourself</div>
+            <div class="article-desc">Phishing is no longer just a simple scam — it is a calculated psychological game designed to exploit trust, curiosity, and human behaviour. A breakdown of how modern phishing works and what you can do to stay protected.</div>
+          </div>
+          <div class="article-cta">Read</div>
+        </a>
 
-      <a href="article2.html" class="article-item reveal">
-        <div class="article-num">02</div>
-        <div class="article-body">
-          <div class="article-tag">Cybersecurity · Privacy</div>
-          <div class="article-title">Social Engineering Explained: How Attackers Exploit Trust</div>
-          <div class="article-desc">The most sophisticated cyberattacks don't break through firewalls — they walk through the front door. A deep dive into the manipulation techniques that make social engineering so reliably effective.</div>
-        </div>
-        <div class="article-cta">Read</div>
-      </a>
+        <a href="articles/social-engineering-attacks-2026.html" class="article-item reveal">
+          <div class="article-num">02</div>
+          <div class="article-body">
+            <div class="article-tag">Cybersecurity · Social Engineering</div>
+            <div class="article-title">Understanding Social Engineering Attacks in 2026</div>
+            <div class="article-desc">Fraudsters have clearly upskilled their game. Understanding how modern scams work isn't just useful anymore — it's essential for protecting ourselves in today's digital world.</div>
+          </div>
+          <div class="article-cta">Read</div>
+        </a>
 
-      <a href="article3.html" class="article-item reveal">
-        <div class="article-num">03</div>
-        <div class="article-body">
-          <div class="article-tag">Consumer Rights</div>
-          <div class="article-title">Your Data Rights Explained: What Companies Must Tell You</div>
-          <div class="article-desc">Privacy policies are designed to be unread. But inside them — and in the laws that govern them — are rights most consumers never exercise. Here's what you are actually entitled to know and demand.</div>
-        </div>
-        <div class="article-cta">Read</div>
-      </a>
+        <a href="articles/what-to-do-after-data-breach.html" class="article-item reveal">
+          <div class="article-num">03</div>
+          <div class="article-body">
+            <div class="article-tag">Data Breach · Consumer Protection</div>
+            <div class="article-title">What to Do After a Data Breach</div>
+            <div class="article-desc">Digital robbery is far more complex than traditional burglary. A step-by-step guide to help you respond effectively after a data breach and regain control of your digital security.</div>
+          </div>
+          <div class="article-cta">Read</div>
+        </a>
 
-      <a href="article4.html" class="article-item reveal">
-        <div class="article-num">04</div>
-        <div class="article-body">
-          <div class="article-tag">SEO · Long-Form</div>
-          <div class="article-title">How to Write for SEO Without Losing Your Reader</div>
-          <div class="article-desc">The tension between search optimisation and good writing doesn't have to be a trade-off. A practical guide to producing content that ranks in search and earns a reader's trust at the same time.</div>
-        </div>
-        <div class="article-cta">Read</div>
-      </a>
+        <a href="articles/why-data-privacy-laws-matter.html" class="article-item reveal">
+          <div class="article-num">04</div>
+          <div class="article-body">
+            <div class="article-tag">Data Privacy · Consumer Rights</div>
+            <div class="article-title">Why Data Privacy Laws Matter for Consumers</div>
+            <div class="article-desc">Data privacy laws exist to protect consumers, giving you control over your personal information and ensuring that companies are held accountable for keeping your data safe.</div>
+          </div>
+          <div class="article-cta">Read</div>
+        </a>
 
+      </div>
     </div>
+
+    <!-- COPYWRITING SUBSECTION -->
+    <div class="work-subsection">
+      <div class="work-sub-label">Brand <em>Copywriting</em></div>
+      <div class="copy-grid reveal">
+
+        <div class="copy-card">
+          <div class="copy-card-brand">SpendWise · Fintech</div>
+          <div class="copy-card-headline">Take Care of Your Money, Like It Takes Care of You</div>
+          <div class="copy-card-sub">Your personal CA, built right into an app — no effort, no confusion.</div>
+          <div class="copy-card-section">
+            <div class="copy-card-label">Problem</div>
+            <div class="copy-card-text">Manual tracking is boring. Budgeting apps are complicated. So you end up doing&hellip; nothing.</div>
+          </div>
+          <div class="copy-card-section">
+            <div class="copy-card-label">Solution</div>
+            <div class="copy-card-text">SpendWise acts like your in-app CA — automatically tracking, organizing, and guiding your spending without the extra work.</div>
+          </div>
+          <div class="copy-card-cta">
+            <div class="copy-card-cta-label">CTA</div>
+            <div class="copy-card-cta-text">"Start Smarter Spending"</div>
+          </div>
+        </div>
+
+        <div class="copy-card">
+          <div class="copy-card-brand">FirstSip · Lifestyle</div>
+          <div class="copy-card-headline">Say Hello to Better Mornings</div>
+          <div class="copy-card-sub">Start your day with a cup that wakes you up, resets your mood, and gets you going.</div>
+          <div class="copy-card-section">
+            <div class="copy-card-label">Problem</div>
+            <div class="copy-card-text">Snoozed alarms, scattered thoughts, and no time to breathe. Before the day takes over, FirstSip is that one moment that brings you back.</div>
+          </div>
+          <div class="copy-card-section">
+            <div class="copy-card-label">Solution</div>
+            <div class="copy-card-text">FirstSip turns rushed mornings into a calm, focused start.</div>
+          </div>
+          <div class="copy-card-cta">
+            <div class="copy-card-cta-label">CTA</div>
+            <div class="copy-card-cta-text">"Take a Sip"</div>
+          </div>
+        </div>
+
+        <div class="copy-card">
+          <div class="copy-card-brand">YouGotIt · Fitness</div>
+          <div class="copy-card-headline">Just One Step</div>
+          <div class="copy-card-sub">Your best version is waiting to meet you.</div>
+          <div class="copy-card-section">
+            <div class="copy-card-label">Problem</div>
+            <div class="copy-card-text">It only takes one step. So why haven&rsquo;t you taken it yet?</div>
+          </div>
+          <div class="copy-card-section">
+            <div class="copy-card-label">Solution</div>
+            <div class="copy-card-text">YouGotIt helps you take that first step and keeps you going, one step at a time, until you meet your best version.</div>
+          </div>
+          <div class="copy-card-cta">
+            <div class="copy-card-cta-label">CTA</div>
+            <div class="copy-card-cta-text">"Begin Now"</div>
+          </div>
+        </div>
+
+        <div class="copy-card">
+          <div class="copy-card-brand">Raydiant · Skincare</div>
+          <div class="copy-card-headline">Your Skin Loves It. The Sun Doesn&rsquo;t.</div>
+          <div class="copy-card-sub">Carefully curated to protect your skin from the sun.</div>
+          <div class="copy-card-section">
+            <div class="copy-card-label">Problem</div>
+            <div class="copy-card-text">It&rsquo;s never &ldquo;just a little sun.&rdquo; Your skin remembers it all.</div>
+          </div>
+          <div class="copy-card-section">
+            <div class="copy-card-label">Solution</div>
+            <div class="copy-card-text">So effortless, it becomes a step you never skip.</div>
+          </div>
+          <div class="copy-card-cta">
+            <div class="copy-card-cta-label">CTA</div>
+            <div class="copy-card-cta-text">"Make It Part of Your Routine"</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </section>
 
   <!-- 02 SKILLS -->
@@ -640,13 +819,15 @@
         </div>
         <div class="exp-right">
           <div class="exp-role">Content Writer</div>
-          <div class="exp-org">Company Name</div>
+          <div class="exp-org">Levi and Korsinsky, LLP</div>
           <ul class="exp-points">
-            <li>Produce and publish 3 in-depth, SEO-optimised articles per week covering data breach litigation, consumer rights, and cybersecurity — translating complex legal concepts into accessible, reader-friendly content.</li>
-            <li>Conduct structured research on ongoing investigations, legal developments, and data privacy issues to ensure factual accuracy and relevance.</li>
-            <li>Manage end-to-end content publishing in WordPress, maintaining formatting consistency and brand voice adherence.</li>
-            <li>Create and schedule content across Twitter, Facebook, and Instagram, aligned with active investigation campaigns.</li>
-            <li>Collaborate with internal legal and research teams to align content messaging with case developments.</li>
+            <li>Produce and publish 3 in-depth SEO-optimized articles per week focused on data breach litigation, consumer rights, and cybersecurity topics, translating complex legal concepts into accessible, reader-friendly content.</li>
+            <li>Conduct structured research on ongoing investigations, legal developments, and data privacy issues to ensure accuracy and relevance.</li>
+            <li>Integrate assigned keywords and search phrases strategically to support organic visibility and search performance.</li>
+            <li>Manage content publishing workflows using WordPress, ensuring formatting consistency and adherence to brand guidelines.</li>
+            <li>Create and schedule content for Twitter, Facebook, and Instagram, aligning posts with active investigations and content campaigns.</li>
+            <li>Contribute to improved content impressions and audience engagement through structured topic selection and consistent publishing.</li>
+            <li>Collaborate with internal legal and research teams to align content messaging with case developments and investigative priorities.</li>
           </ul>
           <div class="exp-chips">
             <span class="chip">SEO Writing</span>
@@ -665,18 +846,38 @@
         </div>
         <div class="exp-right">
           <div class="exp-role">Investigation Specialist</div>
-          <div class="exp-org">Company Name</div>
+          <div class="exp-org">Amazon, Hyderabad</div>
           <ul class="exp-points">
             <li>Conducted detailed investigations into phishing, social engineering, and financial fraud schemes using internal risk analysis tools.</li>
-            <li>Analysed fraud patterns, behavioural indicators, and risk signals to support early detection and mitigation of financial threats.</li>
+            <li>Analyzed fraud patterns, behavioral indicators, and risk signals to support early detection and mitigation of financial threats.</li>
             <li>Documented investigative findings and contributed insights to improve fraud prevention processes and risk assessment frameworks.</li>
-            <li>Worked cross-functionally to strengthen security measures and reduce potential financial exposure.</li>
+            <li>Worked cross-functionally with internal stakeholders to strengthen security measures and minimize potential financial exposure.</li>
+            <li>Developed strong analytical, research, and documentation skills transferable to investigative and compliance-focused content roles.</li>
           </ul>
           <div class="exp-chips">
             <span class="chip">Fraud Investigation</span>
             <span class="chip">Risk Analysis</span>
             <span class="chip">Documentation</span>
             <span class="chip">Phishing</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-left">
+          <div class="exp-period">Aug 2021 – Jan 2022</div>
+          <div class="exp-duration">6 Months</div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-role">Customer Service Associate</div>
+          <div class="exp-org">Amazon, Hyderabad</div>
+          <ul class="exp-points">
+            <li>Managed customer escalations and resolved complex issues while maintaining high service standards.</li>
+            <li>Handled sensitive cases requiring careful communication, accuracy, and structured problem resolution.</li>
+          </ul>
+          <div class="exp-chips">
+            <span class="chip">Communication</span>
+            <span class="chip">Problem Solving</span>
           </div>
         </div>
       </div>
@@ -703,25 +904,6 @@
         </div>
       </div>
 
-      <div class="exp-item reveal">
-        <div class="exp-left">
-          <div class="exp-period">Aug 2021 – Jan 2022</div>
-          <div class="exp-duration">6 Months</div>
-        </div>
-        <div class="exp-right">
-          <div class="exp-role">Customer Service Associate</div>
-          <div class="exp-org">Company Name</div>
-          <ul class="exp-points">
-            <li>Managed customer escalations and resolved complex issues while maintaining high service standards.</li>
-            <li>Handled sensitive cases requiring careful communication, accuracy, and structured problem resolution.</li>
-          </ul>
-          <div class="exp-chips">
-            <span class="chip">Communication</span>
-            <span class="chip">Problem Solving</span>
-          </div>
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -742,7 +924,7 @@
         </div>
         <div class="exp-right">
           <div class="exp-role">Bachelor of Arts — English Literature</div>
-          <div class="exp-org">University Name</div>
+          <div class="exp-org">Savitribai Phule Pune University</div>
           <ul class="exp-points">
             <li>Developed a strong foundation in close reading, critical analysis, and long-form written communication.</li>
             <li>Built the academic writing discipline and research rigour that underpins professional content work today.</li>
@@ -787,11 +969,6 @@
           </span>
           <span class="copy-confirm">Copied!</span>
         </div>
-        <a href="tel:+919999999999" class="contact-link-row" style="display:none;">
-          <span class="contact-link-label">Phone</span>
-          <span class="contact-link-value">+91 99999 99999</span>
-          <span class="contact-link-arrow">→</span>
-        </a>
       </div>
     </div>
   </section>
@@ -801,7 +978,7 @@
 <footer>
   <div class="footer-inner">
     <span class="footer-name">Shruti Suddala — Content Writer</span>
-    <span class="footer-copy">© 2025</span>
+    <span class="footer-copy">© 2026</span>
   </div>
 </footer>
 

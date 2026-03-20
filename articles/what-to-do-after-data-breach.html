@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>What to Do After a Data Breach — Shruti Suddala</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Karla:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:       #0e0e0f;
+      --surface:  #151516;
+      --surface2: #1c1c1e;
+      --rule:     #2a2a2e;
+      --rule-lt:  #333338;
+      --ink:      #e8e4dc;
+      --ink-mid:  #a09a90;
+      --ink-dim:  #5c5850;
+      --white:    #f0ece4;
+      --accent:   #c8a96e;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      background: var(--bg); color: var(--ink);
+      line-height: 1.7; -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(14,14,15,0.94); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-inner {
+      max-width: 800px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem;
+    }
+    .nav-back {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink-mid);
+      text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--accent); }
+    .nav-back::before { content: '\2190'; }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 600;
+      color: var(--white); text-decoration: none; letter-spacing: 0.03em;
+    }
+
+    /* ARTICLE */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 0 2rem; }
+
+    .article-header { padding: 8rem 0 3rem; border-bottom: 1px solid var(--rule); margin-bottom: 3rem; }
+    .article-tag {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent);
+      display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.4rem;
+    }
+    .article-tag::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
+    .article-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 600; line-height: 1.1; letter-spacing: -0.02em;
+      color: var(--white); margin-bottom: 1.2rem;
+    }
+    .article-title em { font-style: italic; font-weight: 400; color: var(--accent); }
+    .article-deck {
+      font-size: 1.15rem; color: var(--ink-mid); font-weight: 300;
+      line-height: 1.7; max-width: 620px; margin-bottom: 2rem;
+      text-align: justify;
+    }
+    .article-meta {
+      display: flex; gap: 2rem; flex-wrap: wrap;
+      font-family: 'Karla', sans-serif; font-size: 0.75rem;
+      color: var(--ink-dim); letter-spacing: 0.06em;
+    }
+    .article-meta span { display: flex; align-items: center; gap: 0.4rem; }
+
+    /* BODY */
+    .article-body { padding-bottom: 6rem; }
+    .article-body h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem; font-weight: 600; color: var(--white);
+      margin: 2.8rem 0 1rem; letter-spacing: -0.01em;
+    }
+    .article-body h2 em { font-style: italic; font-weight: 400; color: var(--accent); }
+    .article-body h3 {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent);
+      margin: 2rem 0 0.8rem;
+    }
+    .article-body p {
+      font-size: 1rem; color: var(--ink-mid); font-weight: 300;
+      line-height: 1.85; margin-bottom: 1.4rem;
+      text-align: justify;
+    }
+    .article-body p strong { font-weight: 600; color: var(--ink); }
+    .article-body ul, .article-body ol {
+      margin: 0 0 1.4rem 0; padding-left: 0;
+      display: flex; flex-direction: column; gap: 0.5rem;
+    }
+    .article-body li {
+      font-size: 1rem; color: var(--ink-mid); font-weight: 300;
+      line-height: 1.75; list-style: none;
+      padding-left: 1.4rem; position: relative;
+      text-align: justify;
+    }
+    .article-body li::before {
+      content: '\2014'; position: absolute; left: 0;
+      color: var(--accent); font-size: 0.85rem;
+    }
+    .article-body ol { counter-reset: item; }
+    .article-body ol li { counter-increment: item; }
+    .article-body ol li::before {
+      content: counter(item) '.';
+      font-family: 'Karla', sans-serif; font-size: 0.75rem;
+      font-weight: 600; color: var(--accent);
+    }
+
+    blockquote {
+      margin: 2.5rem 0; padding: 1.5rem 2rem;
+      border-left: 2px solid var(--accent);
+      background: var(--surface);
+    }
+    blockquote p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-style: italic;
+      color: var(--white) !important; margin: 0 !important;
+      line-height: 1.6;
+    }
+
+    .article-divider {
+      border: none; border-top: 1px solid var(--rule);
+      margin: 3rem 0;
+    }
+
+    /* KEY TAKEAWAYS BOX */
+    .takeaways {
+      background: var(--surface); border: 1px solid var(--rule-lt);
+      border-left: 2px solid var(--accent);
+      padding: 1.6rem 1.8rem; margin: 2.5rem 0;
+    }
+    .takeaways-title {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;
+    }
+
+    /* FOOTER NAV */
+    .article-footer {
+      border-top: 1px solid var(--rule);
+      padding: 2rem 0 4rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-link {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--ink-mid);
+      text-decoration: none; transition: color 0.2s;
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .footer-link:hover { color: var(--accent); }
+    .footer-author {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem; color: var(--ink-dim); font-style: italic;
+    }
+
+    @media (max-width: 600px) {
+      .nav-inner, .article-wrap { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .article-header { padding-top: 6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-back">Portfolio</a>
+    <a href="../index.html" class="nav-logo">Shruti Suddala</a>
+  </div>
+</nav>
+
+<div class="article-wrap">
+
+  <header class="article-header">
+    <div class="article-tag">Data Breach &middot; Consumer Protection</div>
+    <h1 class="article-title">What to Do After<br><em>a Data Breach</em></h1>
+    <p class="article-deck">
+      Digital robbery is far more complex than traditional burglary. Here is a step-by-step
+      guide to help you respond effectively after a data breach and regain control of your
+      digital security.
+    </p>
+    <div class="article-meta">
+      <span>By Shruti Suddala</span>
+      <span>7 min read</span>
+      <span>Data Breach</span>
+    </div>
+  </header>
+
+  <div class="article-body">
+
+    <p>
+      Digital robbery is far more complex than traditional burglary. In many cases, victims may not even realize what data has been stolen or where to seek help. When a breach occurs, a large amount of information is suddenly exposed online, often leaving individuals confused about the next steps.
+    </p>
+
+    <p>
+      Here is a step-by-step guide to help you respond effectively after a data breach.
+    </p>
+
+    <h2>Step 1: <em>Scan Your Exposed Information</em></h2>
+
+    <p>
+      Think of a data breach like a digital break-in. Just as you would check your home to see what's missing after a burglary, one should review what type of information may have been taken from the affected service. Before revisiting all your online activities from the last few days or weeks, take a moment to understand which specific details have been exposed.
+    </p>
+
+    <p>
+      Not every breach carries the same level of risk. In many cases, the exposed data might only include personal information such as your name, age, username, or general preferences. While this isn't ideal, it usually doesn't allow attackers to cause serious harm on its own. Still, it's a good reminder to stay cautious about phishing emails or suspicious messages that might use this information to appear more convincing.
+    </p>
+
+    <p>
+      The real concern begins when sensitive or security-related data is involved. If things like your passwords, Social Security number (SSN), credit card details, banking information, or login credentials were exposed, the risk becomes much higher. With this kind of information, cybercriminals may attempt account takeovers, financial fraud, or even identity theft. In those situations, acting quickly changing passwords, enabling two-factor authentication, and monitoring financial accounts becomes critical.
+    </p>
+
+    <p>
+      To find out whether your information has appeared in known breaches, you can use several trusted online tools that scan large breach databases. Simply entering your email address can reveal whether it has been part of any reported leaks:
+    </p>
+
+    <h3>Trusted Breach-Checking Tools</h3>
+
+    <ul>
+      <li><strong>Have I Been Pwned</strong> &mdash; One of the most widely used breach-checking platforms that shows if your email or passwords have appeared in public data leaks.</li>
+      <li><strong>Mozilla Monitor</strong> &mdash; Allows you to check your email against known breaches and provides guidance on how to secure affected accounts.</li>
+      <li><strong>Google Password Checkup</strong> &mdash; If you use Google's password manager, this tool automatically identifies compromised or reused passwords.</li>
+    </ul>
+
+    <hr class="article-divider"/>
+
+    <h2>Step 2: <em>Shut the Door &mdash; Secure Your Accounts Immediately</em></h2>
+
+    <p>
+      Once you've identified what information might have been exposed, the next step is to secure your accounts immediately. Think of it this way: if someone managed to steal a key to your house, you wouldn't wait around hoping they never use it, you would change the lock right away. The same principle applies to your digital accounts.
+    </p>
+
+    <p>
+      If a fraudster has access to your password or login details, they essentially have the key to your online door. And before they attempt to unlock other accounts or services linked to you, it becomes extremely important to shut that door.
+    </p>
+
+    <p>
+      Start by changing any compromised passwords immediately, especially for the account involved in the breach. If you have used the same password across multiple platforms, a common habit make sure to update those as well. Using strong, unique passwords for each account can significantly reduce the risk of attackers moving from one account to another.
+    </p>
+
+    <p>
+      Next, enable Multi-Factor Authentication (MFA) on all important accounts such as email, banking, and social media. MFA adds an extra layer of protection by requiring a second verification step like a code sent to your phone or generated by an authenticator app before anyone can log in. Even if someone has your password, this extra step can stop them from gaining access.
+    </p>
+
+    <p>
+      Another useful precaution is to log out of all active sessions across your devices. Many platforms allow you to sign out of all sessions remotely through account security settings. This ensures that if someone manages to access your account from another device, they'll be immediately kicked out.
+    </p>
+
+    <p>
+      In simple terms, this step is about locking every possible entry point. By changing passwords, enabling MFA, and ending active sessions, you stop the thief from using the key they just stole to enter other "rooms" in your digital life.
+    </p>
+
+    <hr class="article-divider"/>
+
+    <h2>Step 3: <em>Financial Fortification &mdash; Protect Your Credit and Assets</em></h2>
+
+    <p>
+      If a data breach involves financial information or personal identifiers, the situation shifts from inconvenience to potential financial risk. At this stage, the focus moves to protecting your money, credit history, and identity before cybercriminals attempt to misuse the stolen data.
+    </p>
+
+    <p>
+      One of the most effective protective measures is placing a credit freeze with the major credit bureaus. A credit freeze prevents lenders from accessing your credit report, making it nearly impossible for fraudsters to open new credit cards or loans in your name. You can request a freeze directly through the major credit reporting agencies:
+    </p>
+
+    <h3>Major Credit Reporting Agencies</h3>
+
+    <ul>
+      <li><strong>Equifax</strong></li>
+      <li><strong>Experian</strong></li>
+      <li><strong>TransUnion</strong></li>
+    </ul>
+
+    <p>
+      Another option is placing a fraud alert on your credit file. Unlike a freeze, a fraud alert doesn't block credit checks but signals lenders to take extra steps to verify your identity before approving new credit. This adds another layer of protection without completely locking your credit.
+    </p>
+
+    <p>
+      In addition to protecting your credit profile, it's important to monitor your financial accounts closely. Enable real-time transaction alerts through your bank or credit card provider so you're notified immediately of unusual spending. Many banks also allow you to set spending notifications, location-based alerts, or daily balance updates. These tools help you catch unauthorized transactions quickly often before they escalate into larger financial losses.
+    </p>
+
+    <p>
+      Think of this step as fortifying your financial defenses. By freezing your credit and actively monitoring your accounts, you reduce the chances of fraudsters turning stolen data into financial damage.
+    </p>
+
+    <hr class="article-divider"/>
+
+    <h2>Step 4: <em>Communication and Reporting &mdash; Alert the Right Authorities</em></h2>
+
+    <p>
+      A data breach may feel personal, but it's important to remember that it is also a crime. Reporting the incident not only protects you but also helps authorities track and stop larger fraud operations.
+    </p>
+
+    <p>
+      If your identity or financial information has been compromised, one of the first places to report it is the Federal Trade Commission's identity theft portal at <strong>IdentityTheft.gov</strong>.
+    </p>
+
+    <p>
+      This platform helps victims report identity theft and provides a step-by-step recovery plan tailored to your situation. Filing a report here also creates an official record of the incident, which can be helpful if you need to dispute fraudulent charges or accounts later.
+    </p>
+
+    <p>
+      In more serious cases such as identity theft, financial fraud, or ongoing harassment &mdash; it may also be necessary to file a report with your local police department. While local authorities may not always investigate every cybercrime, having an official report can strengthen your case when dealing with banks or credit agencies.
+    </p>
+
+    <p>
+      Finally, contact the fraud department of your bank or financial institution as soon as possible. Banks are often able to place security holds on accounts, reverse unauthorized transactions, and issue new cards or credentials. Most importantly, reporting the issue quickly creates a paper trail that documents when the breach was discovered and what actions were taken.
+    </p>
+
+    <hr class="article-divider"/>
+
+    <h2>Step 5: <em>Long-Term Vigilance &mdash; Prevent the Aftershocks</em></h2>
+
+    <p>
+      Recovering from a data breach doesn't end once you change passwords or secure your accounts. In many cases, stolen data is not used immediately. Cybercriminals often store or sell it on underground marketplaces and use it months later, when victims have let their guard down.
+    </p>
+
+    <p>
+      Because of this, it's important to adopt a mindset of long-term digital vigilance. One of the most common tactics used by attackers after a breach is phishing emails or messages designed to trick you into revealing more information. These attempts can become more convincing when criminals already have pieces of your personal data, such as your name, email address, or account details.
+    </p>
+
+    <p>
+      Be cautious of unexpected emails asking you to reset passwords, verify accounts, or download attachments. Always double-check the sender's address and access important accounts by visiting the official website directly rather than clicking links in emails.
+    </p>
+
+    <p>
+      Another important habit is maintaining good digital hygiene. This includes regularly updating passwords, reviewing account security settings, removing unused accounts, and periodically checking whether your information appears in new data breaches.
+    </p>
+
+    <p>
+      Think of this final step as preparing for the aftershocks of a breach. By staying alert and practicing better security habits, you reduce the chances that stolen information will cause problems months or even years down the line.
+    </p>
+
+    <hr class="article-divider"/>
+
+    <h2>Conclusion: <em>Rebuilding Your Digital Defenses</em></h2>
+
+    <p>
+      A data breach can feel overwhelming, especially when you are unsure what information may have been exposed or how it might be used. However, responding quickly and methodically can significantly reduce the risk of further damage. By identifying what data was leaked, securing your accounts, protecting your financial information, reporting the incident, and staying alert for future threats, you regain control of your digital security. While breaches are becoming more common in today's connected world, practicing good security habits and staying informed can help ensure that a single incident does not turn into long-term harm.
+    </p>
+
+  </div>
+
+  <div class="article-footer">
+    <a href="social-engineering-attacks-2026.html" class="footer-link">&larr; Previous Article</a>
+    <span class="footer-author">Written by Shruti Suddala</span>
+    <a href="why-data-privacy-laws-matter.html" class="footer-link">Next Article &rarr;</a>
+  </div>
+
+</div>
+</body>
+</html>

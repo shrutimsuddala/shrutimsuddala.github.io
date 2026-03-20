@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How Phishing Scams Work and How to Protect Yourself — Shruti Suddala</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Karla:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:       #0e0e0f;
+      --surface:  #151516;
+      --surface2: #1c1c1e;
+      --rule:     #2a2a2e;
+      --rule-lt:  #333338;
+      --ink:      #e8e4dc;
+      --ink-mid:  #a09a90;
+      --ink-dim:  #5c5850;
+      --white:    #f0ece4;
+      --accent:   #c8a96e;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      background: var(--bg); color: var(--ink);
+      line-height: 1.7; -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(14,14,15,0.94); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-inner {
+      max-width: 800px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem;
+    }
+    .nav-back {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink-mid);
+      text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--accent); }
+    .nav-back::before { content: '\2190'; }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 600;
+      color: var(--white); text-decoration: none; letter-spacing: 0.03em;
+    }
+
+    /* ARTICLE */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 0 2rem; }
+
+    .article-header { padding: 8rem 0 3rem; border-bottom: 1px solid var(--rule); margin-bottom: 3rem; }
+    .article-tag {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent);
+      display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.4rem;
+    }
+    .article-tag::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
+    .article-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 600; line-height: 1.1; letter-spacing: -0.02em;
+      color: var(--white); margin-bottom: 1.2rem;
+    }
+    .article-title em { font-style: italic; font-weight: 400; color: var(--accent); }
+    .article-deck {
+      font-size: 1.15rem; color: var(--ink-mid); font-weight: 300;
+      line-height: 1.7; max-width: 620px; margin-bottom: 2rem;
+      text-align: justify;
+    }
+    .article-meta {
+      display: flex; gap: 2rem; flex-wrap: wrap;
+      font-family: 'Karla', sans-serif; font-size: 0.75rem;
+      color: var(--ink-dim); letter-spacing: 0.06em;
+    }
+    .article-meta span { display: flex; align-items: center; gap: 0.4rem; }
+
+    /* BODY */
+    .article-body { padding-bottom: 6rem; }
+    .article-body h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem; font-weight: 600; color: var(--white);
+      margin: 2.8rem 0 1rem; letter-spacing: -0.01em;
+    }
+    .article-body h2 em { font-style: italic; font-weight: 400; color: var(--accent); }
+    .article-body h3 {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent);
+      margin: 2rem 0 0.8rem;
+    }
+    .article-body p {
+      font-size: 1rem; color: var(--ink-mid); font-weight: 300;
+      line-height: 1.85; margin-bottom: 1.4rem;
+      text-align: justify;
+    }
+    .article-body p strong { font-weight: 600; color: var(--ink); }
+    .article-body ul, .article-body ol {
+      margin: 0 0 1.4rem 0; padding-left: 0;
+      display: flex; flex-direction: column; gap: 0.5rem;
+    }
+    .article-body li {
+      font-size: 1rem; color: var(--ink-mid); font-weight: 300;
+      line-height: 1.75; list-style: none;
+      padding-left: 1.4rem; position: relative;
+      text-align: justify;
+    }
+    .article-body li::before {
+      content: '\2014'; position: absolute; left: 0;
+      color: var(--accent); font-size: 0.85rem;
+    }
+    .article-body ol { counter-reset: item; }
+    .article-body ol li { counter-increment: item; }
+    .article-body ol li::before {
+      content: counter(item) '.';
+      font-family: 'Karla', sans-serif; font-size: 0.75rem;
+      font-weight: 600; color: var(--accent);
+    }
+
+    blockquote {
+      margin: 2.5rem 0; padding: 1.5rem 2rem;
+      border-left: 2px solid var(--accent);
+      background: var(--surface);
+    }
+    blockquote p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-style: italic;
+      color: var(--white) !important; margin: 0 !important;
+      line-height: 1.6;
+    }
+
+    .article-divider {
+      border: none; border-top: 1px solid var(--rule);
+      margin: 3rem 0;
+    }
+
+    /* KEY TAKEAWAYS BOX */
+    .takeaways {
+      background: var(--surface); border: 1px solid var(--rule-lt);
+      border-left: 2px solid var(--accent);
+      padding: 1.6rem 1.8rem; margin: 2.5rem 0;
+    }
+    .takeaways-title {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;
+    }
+
+    /* FOOTER NAV */
+    .article-footer {
+      border-top: 1px solid var(--rule);
+      padding: 2rem 0 4rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-link {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--ink-mid);
+      text-decoration: none; transition: color 0.2s;
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .footer-link:hover { color: var(--accent); }
+    .footer-author {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem; color: var(--ink-dim); font-style: italic;
+    }
+
+    @media (max-width: 600px) {
+      .nav-inner, .article-wrap { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .article-header { padding-top: 6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-back">Portfolio</a>
+    <a href="../index.html" class="nav-logo">Shruti Suddala</a>
+  </div>
+</nav>
+
+<div class="article-wrap">
+
+  <header class="article-header">
+    <div class="article-tag">Cybersecurity &middot; Phishing</div>
+    <h1 class="article-title">How Phishing Scams Work<br><em>and How to Protect Yourself</em></h1>
+    <p class="article-deck">
+      Phishing is no longer just a simple scam &mdash; it is a calculated psychological game
+      designed to exploit trust, curiosity, and human behaviour. This article breaks down how
+      modern phishing works and what you can do to stay protected.
+    </p>
+    <div class="article-meta">
+      <span>By Shruti Suddala</span>
+      <span>9 min read</span>
+      <span>Cybersecurity</span>
+    </div>
+  </header>
+
+  <div class="article-body">
+
+    <p>
+      In an era where nearly every aspect of our lives is digitized, personal data has become one of the most valuable assets we possess. From banking and shopping to social media and work communication, vast amounts of information move through digital platforms every day making data the new currency and cybercriminals the ultimate pickpockets. Among their many tactics, phishing has evolved into one of the most effective and dangerous. What was once associated with poorly written emails from so-called "Nigerian princes" has transformed into a highly sophisticated form of cybercrime. Modern phishing attacks often imitate trusted companies, colleagues, or financial institutions and rely heavily on psychological manipulation, urgency, and convincing design to trick victims into revealing sensitive information. In today's digital world, phishing is no longer just a simple scam, it is a calculated psychological game designed to exploit trust, curiosity, and human behavior.
+    </p>
+
+    <h2>What Is Phishing <em>and How It Works?</em></h2>
+
+    <p>
+      Imagine a thriller movie where the villain disguises themselves as a trusted person, and one wrong decision by the protagonist changes everything. In the digital world, you are the protagonist and your personal credentials are the prized processions you need to protect. Think of the hacker as an angler, a deceptive message as the hook, and your sensitive information passwords, credit card numbers, or personal identity as the catch.
+    </p>
+
+    <p>
+      Phishing is essentially a form of online trickery designed to lure victims into revealing confidential information. But unlike mugging, cybercriminals plan their attack carefully. They first study your online habits, what you post on social media, where you shop, or which accounts you use most. Much like a stalker observing a crush, they gather details to make their attack seem believable.
+    </p>
+
+    <p>
+      Once the groundwork is laid, the next step is sending a deceptive message that appears legitimate &mdash; a message crafted to look authentic. Attackers often use:
+    </p>
+
+    <ul>
+      <li><strong>Spoofing:</strong> Making the sender's email look legitimate, e.g., security@paypa1.com.</li>
+      <li><strong>Branding:</strong> Using official logos, fonts, and color schemes to mimic real companies.</li>
+      <li><strong>The Hook:</strong> Creating urgency or a reward, such as "Unauthorized login detected" or "Claim your $500 gift card."</li>
+    </ul>
+
+    <p>
+      If you take the bait and click the link, you're redirected to a fake landing page &mdash; a mirror of the real site, designed to capture your keystrokes. The moment you enter your credentials, they are instantly sent to the hacker.
+    </p>
+
+    <h3>Consequences of Taking the Bait</h3>
+
+    <ul>
+      <li><strong>Financial theft:</strong> Draining bank accounts or making unauthorized purchases.</li>
+      <li><strong>Data sale:</strong> Selling your personal information on the dark web.</li>
+      <li><strong>Identity hijacking:</strong> Using your email to send phishing links to your contacts, spreading the attack further.</li>
+    </ul>
+
+    <p>
+      Phishing works because it combines careful observation, psychological manipulation, and convincing digital design. Understanding these steps is the first defense against falling victim to such attacks.
+    </p>
+
+    <hr class="article-divider"/>
+
+    <h2>Beyond the Inbox: <em>The Many Faces of Phishing</em></h2>
+
+    <p>
+      "Your account has been credited with $XXXX." How often do you see messages like this in your spam folder? While email providers like Gmail automatically filter obvious spam, cybercriminals have found countless other ways to reach you, exploiting the channels you trust most. Phishing is no longer limited to the inbox; it has evolved to target phone calls, text messages, and even social media interactions.
+    </p>
+
+    <h3>Phone Calls and Voicemails (Vishing)</h3>
+    <p>
+      You might receive a call claiming to be from the IRS, your bank, or tech support, warning that your account has been compromised or payments are overdue. These calls use urgency and fear to manipulate victims into revealing personal information or authorizing transactions.
+    </p>
+
+    <h3>Text Messages (Smishing)</h3>
+    <p>
+      Fraudsters send SMS messages pretending to be delivery services, banks, or government agencies. They often include links to fake websites or ask you to confirm account details. Because text messages feel more personal than emails, recipients are more likely to trust them and click without thinking.
+    </p>
+
+    <h3>Social Media Phishing (Angler Phishing)</h3>
+    <p>
+      Attackers now target social media platforms with fake customer service accounts or cloned profiles of real companies. They reach out via direct messages, offering help while secretly asking for login credentials or sensitive information. These scams exploit trust in familiar logos, usernames, or mutual connections.
+    </p>
+
+    <h3>AI-Enhanced and Spoofed Attacks</h3>
+    <p>
+      Technology has made phishing more sophisticated. Some attackers use AI to craft highly realistic messages, emails, or calls that mimic the style and tone of trusted institutions. Spoofed phone numbers and email addresses make it appear as if communication comes from a real person or company you know.
+    </p>
+
+    <div class="takeaways">
+      <div class="takeaways-title">Key Takeaway</div>
+      <p>
+        Phishing has moved beyond the inbox &mdash; cybercriminals will exploit any digital channel that connects you to the online world. Awareness of these diverse attack methods is essential, because even a moment's inattention can give attackers access to your sensitive personal and financial information.
+      </p>
+    </div>
+
+    <hr class="article-divider"/>
+
+    <h2>Spotting the "Tell": <em>Red Flags of a Digital Trap</em></h2>
+
+    <p>
+      It's time to awaken your inner Sherlock Holmes and arm yourself with the sword of digital detective skills. Just a little extra attention can save you from a world of trouble because even the most sophisticated phishing scams usually leave a trace. By learning to spot these subtle clues, you can turn the tables on cybercriminals.
+    </p>
+
+    <ol>
+      <li><strong>The Mismatched URL:</strong> Always hover over links before clicking. Even if a message looks legitimate, the destination may be deceptive. For example, a link reading wellsfargo.com might actually point to wellsfargo-verify.com. Checking the URL carefully is one of the simplest yet most effective ways to avoid falling into a trap.</li>
+      <li><strong>Inconsistent Tone and Language:</strong> Legitimate companies rarely use all-caps, excessive punctuation, or overly dramatic language in professional communications. Phrases like "URGENTLY REQUIRED!!!" or "Act now or lose your account!" are classic red flags. Pay attention to spelling mistakes, unusual grammar, or inconsistent formatting; they often reveal a scam.</li>
+      <li><strong>Requests for Secrecy or Immediate Action:</strong> Cybercriminals often pressure you to act quickly and quietly. If a message tells you "Don't tell anyone" or "Act now before it's too late," treat it with suspicion. Scammers rely on urgency and fear to bypass your natural caution, so taking a moment to verify the request can prevent serious consequences.</li>
+    </ol>
+
+    <p>
+      By learning to recognize these signs, you equip yourself with a powerful defense. The more you practice spotting subtle clues the "tells" the harder it becomes for attackers to trick you. Being vigilant, cautious, and curious about every unexpected email, text, or social media message is your first line of defense in the digital world.
+    </p>
+
+    <hr class="article-divider"/>
+
+    <h2>Your Digital Armor: <em>Strategies for Total Protection</em></h2>
+
+    <p>
+      It's time to win the war against digital fraud &mdash; and the best weapons are simple, consistent habits that protect your online life. A few well-chosen precautions can drastically reduce your risk and prepare you to face even the most sophisticated phishing attempts.
+    </p>
+
+    <ol>
+      <li><strong>The MFA Mandate:</strong> Multi-Factor Authentication (MFA) is the single most effective barrier against stolen passwords. By requiring a second verification step &mdash; like a one-time code sent to your phone or generated by an authenticator app &mdash; MFA ensures that even if a hacker gets hold of your password, they still cannot access your account. Think of it as a reinforced digital lock that only you can open.</li>
+      <li><strong>Password Hygiene:</strong> Using strong, unique passwords for every account is essential. Reusing passwords across multiple sites is a major vulnerability &mdash; one breach could compromise all your accounts. A reliable password manager can generate and store complex passwords for you, turning a tedious chore into an effortless habit. Good password hygiene prevents a single leak from turning into a total catastrophe.</li>
+      <li><strong>The "Go to the Source" Rule:</strong> Never click links in unsolicited emails, texts, or social media messages. Instead, manually type the company's website address into your browser or use their official app. This simple habit prevents you from being redirected to a fake landing page designed to capture your credentials. Always verify before you trust.</li>
+      <li><strong>Stay Updated and Protected:</strong> Keep your devices, apps, and operating systems updated with the latest security patches. Cybercriminals often exploit outdated software to gain access to accounts. Install trusted antivirus and anti-malware software, and enable browser security features to block dangerous sites.</li>
+      <li><strong>Regular Account Monitoring:</strong> Keep an eye on your financial and online accounts for unusual activity. Enable real-time alerts for transactions, login attempts, or changes to personal information. Early detection can prevent small breaches from escalating into serious damage.</li>
+    </ol>
+
+    <p>
+      By combining these strategies, you build a strong digital armor that protects your identity, finances, and online presence. Cybersecurity isn't about fear &mdash; it's about preparedness, vigilance, and smart habits.
+    </p>
+
+    <hr class="article-divider"/>
+
+    <h2>The Recovery Plan: <em>What to Do if You've Been "Hooked"</em></h2>
+
+    <p>
+      Even with the best defenses, sometimes hackers still manage to slip through. If you find yourself falling prey to a phishing scam or data breach, it's critical to act quickly and methodically to contain the damage and protect your digital life. Think of this as building a safety grill around your online world &mdash; every step strengthens your defenses.
+    </p>
+
+    <ol>
+      <li><strong>Immediate Isolation:</strong> The first priority is to prevent further damage. Disconnect the compromised device from Wi-Fi or any network to stop malware or unauthorized access from spreading to other devices. If possible, use a secure, clean device to manage recovery actions.</li>
+      <li><strong>Credential Reset:</strong> Change the password for the compromised account immediately. If you used the same password elsewhere &mdash; a common habit &mdash; update those accounts as well. Enable Multi-Factor Authentication (MFA) on all important accounts to add an extra layer of protection.</li>
+      <li><strong>Credit Freeze and Financial Protection:</strong> If sensitive information like Social Security numbers, banking, or credit card details were exposed, contact the major credit bureaus &mdash; Equifax, Experian, and TransUnion &mdash; to place a credit freeze or fraud alert. This prevents attackers from opening new accounts in your name. Additionally, monitor your bank and credit card accounts for unusual transactions and report any suspicious activity immediately.</li>
+      <li><strong>Report the Incident:</strong> Filing a report with authorities can protect you and others. In the U.S., the Federal Trade Commission (FTC) Identity Theft Portal offers step-by-step guidance to recover from identity theft. If necessary, also contact your local police and the fraud department of your bank.</li>
+      <li><strong>Long-Term Vigilance:</strong> Even after recovery, stay alert. Scammers may reuse stolen information in new attacks months later. Regularly check whether your email or credentials have been exposed using tools like Have I Been Pwned and maintain strong digital hygiene.</li>
+    </ol>
+
+    <p>
+      Acting swiftly and carefully after a breach can significantly reduce the risk of long-term damage. Recovery isn't just about fixing what's broken &mdash; it's about strengthening your defenses for the future.
+    </p>
+
+    <hr class="article-divider"/>
+
+    <h2>Wrapping Up: <em>Safeguard Your Online Life</em></h2>
+
+    <p>
+      Phishing is a constantly evolving threat that preys on human trust and digital habits, but awareness and proactive security measures can keep you protected. By staying vigilant, practicing good online hygiene, and responding quickly to breaches, you can safeguard your personal information and maintain control of your digital life.
+    </p>
+
+  </div>
+
+  <div class="article-footer">
+    <a href="../index.html" class="footer-link">&larr; Back to Portfolio</a>
+    <span class="footer-author">Written by Shruti Suddala</span>
+    <a href="social-engineering-attacks-2026.html" class="footer-link">Next Article &rarr;</a>
+  </div>
+
+</div>
+</body>
+</html>
