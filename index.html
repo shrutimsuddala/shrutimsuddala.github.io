@@ -463,10 +463,9 @@
       font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em;
       color: var(--accent);
       display: none; white-space: nowrap;
-      flex-shrink: 0;
+      margin-left: 0.6rem;
     }
-    .copy-confirm.show { display: flex; align-items: center; }
-    .copy-confirm.show + .copy-icon { display: none; }
+    .copy-confirm.show { display: inline; }
 
     /* ── FOOTER ── */
     footer { border-top: 1px solid var(--rule); padding: 1.6rem 2rem; background: var(--surface); }
@@ -966,8 +965,7 @@
       <div class="contact-links">
         <div class="contact-link-row contact-copy-row" onclick="copyEmail(this)">
           <span class="contact-link-label">Email</span>
-          <span class="contact-link-value" id="email-value">shrutimsuddala@gmail.com</span>
-          <span class="copy-confirm">Copied!</span>
+          <span class="contact-link-value" id="email-value">shrutimsuddala@gmail.com <span class="copy-confirm">Copied!</span></span>
           <span class="copy-icon" title="Copy email">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
