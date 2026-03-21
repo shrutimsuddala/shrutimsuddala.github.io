@@ -459,14 +459,14 @@
     }
     .contact-copy-row:hover .copy-icon { color: var(--accent); }
     .copy-confirm {
-      position: absolute; right: 0;
       font-family: 'Karla', sans-serif;
       font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em;
-      color: var(--accent); opacity: 0;
-      transition: opacity 0.2s;
-      pointer-events: none;
+      color: var(--accent);
+      display: none; white-space: nowrap;
     }
-    .copy-confirm.show { opacity: 1; }
+    .copy-confirm.show { display: inline; }
+    .copy-confirm.show + .copy-icon,
+    .copy-icon.hide { display: none; }
 
     /* ── FOOTER ── */
     footer { border-top: 1px solid var(--rule); padding: 1.6rem 2rem; background: var(--surface); }
@@ -966,13 +966,13 @@
         <div class="contact-link-row contact-copy-row" onclick="copyEmail(this)">
           <span class="contact-link-label">Email</span>
           <span class="contact-link-value" id="email-value">shrutimsuddala@gmail.com</span>
+          <span class="copy-confirm">Copied!</span>
           <span class="copy-icon" title="Copy email">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
             </svg>
           </span>
-          <span class="copy-confirm">Copied!</span>
         </div>
       </div>
     </div>
@@ -1010,13 +1010,8 @@
     const email = document.getElementById('email-value').textContent;
     navigator.clipboard.writeText(email).then(() => {
       const confirm = row.querySelector('.copy-confirm');
-      const icon = row.querySelector('.copy-icon');
       confirm.classList.add('show');
-      icon.style.opacity = '0';
-      setTimeout(() => {
-        confirm.classList.remove('show');
-        icon.style.opacity = '1';
-      }, 2000);
+      setTimeout(() => { confirm.classList.remove('show'); }, 2000);
     });
   }
 
