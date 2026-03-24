@@ -22,8 +22,8 @@
       --rule:      #2a2a2e;
       --rule-lt:   #333338;
       --ink:       #e8e4dc;
-      --ink-mid:   #a09a90;
-      --ink-dim:   #5c5850;
+      --ink-mid:   #ccc6bc;
+      --ink-dim:   #7a756b;
       --white:     #f0ece4;
       --accent:    #c8a96e;
       --accent-dk: #3a2e1a;
@@ -280,6 +280,11 @@
       transition: border-color 0.25s, background 0.25s;
     }
     .copy-card:hover { border-color: var(--rule-lt); background: var(--surface2); }
+    .copy-card-icon {
+      width: 36px; height: 36px; margin-bottom: 1rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .copy-card-icon svg { width: 28px; height: 28px; }
     .copy-card-brand {
       font-family: 'Karla', sans-serif;
       font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em;
@@ -306,13 +311,13 @@
     .copy-card-section:last-of-type { margin-bottom: 0; }
     .copy-card-label {
       font-family: 'Karla', sans-serif;
-      font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
       text-transform: uppercase; color: var(--ink-dim);
       margin-bottom: 0.25rem;
     }
     .copy-card-text {
       font-family: 'Source Serif 4', serif;
-      font-size: 0.88rem; font-weight: 300; color: var(--ink-mid);
+      font-size: 0.88rem; font-weight: 400; color: var(--ink-mid);
       line-height: 1.65; text-align: justify;
     }
     .copy-card-cta {
@@ -321,7 +326,7 @@
     }
     .copy-card-cta-label {
       font-family: 'Karla', sans-serif;
-      font-size: 0.58rem; font-weight: 600; letter-spacing: 0.1em;
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
       text-transform: uppercase; color: var(--ink-dim);
       margin-bottom: 0.3rem;
     }
@@ -395,7 +400,7 @@
     .exp-points { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.1rem; }
     .exp-points li {
       font-family: 'Source Serif 4', serif;
-      font-size: 0.92rem; color: var(--ink-mid); font-weight: 300; line-height: 1.65;
+      font-size: 0.92rem; color: var(--ink-mid); font-weight: 400; line-height: 1.65;
       text-align: justify;
       list-style: none; padding-left: 1.2rem; position: relative;
     }
@@ -511,6 +516,12 @@
       .stats-row { grid-template-columns: 1fr 1fr; }
       .stat-figure { font-size: 1.8rem; }
       .copy-card-headline { font-size: 1.15rem; }
+      .article-item { grid-template-columns: 1fr; }
+      .article-num { display: none; }
+      .exp-item { gap: 0.5rem; }
+      .stat-cell { padding: 1.2rem 1rem; }
+      .stat-figure { font-size: 1.6rem; }
+      .meta-row { flex-direction: column; gap: 0.2rem; }
     }
   </style>
 </head>
@@ -656,8 +667,11 @@
       <div class="work-sub-label">Brand <em>Copywriting</em></div>
       <div class="copy-grid reveal">
 
-        <div class="copy-card">
-          <div class="copy-card-brand">SpendWise · Fintech</div>
+        <div class="copy-card" style="border-top: 2px solid #4eca8b;">
+          <div class="copy-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#4eca8b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div class="copy-card-brand" style="color: #4eca8b;">SpendWise · Fintech</div>
           <div class="copy-card-headline">Take Care of Your Money, Like It Takes Care of You</div>
           <div class="copy-card-sub">Your personal CA, built right into an app — no effort, no confusion.</div>
           <div class="copy-card-section">
@@ -674,8 +688,11 @@
           </div>
         </div>
 
-        <div class="copy-card">
-          <div class="copy-card-brand">FirstSip · Lifestyle</div>
+        <div class="copy-card" style="border-top: 2px solid #c4956a;">
+          <div class="copy-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#c4956a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <div class="copy-card-brand" style="color: #c4956a;">FirstSip · Lifestyle</div>
           <div class="copy-card-headline">Say Hello to Better Mornings</div>
           <div class="copy-card-sub">Start your day with a cup that wakes you up, resets your mood, and gets you going.</div>
           <div class="copy-card-section">
@@ -692,8 +709,11 @@
           </div>
         </div>
 
-        <div class="copy-card">
-          <div class="copy-card-brand">YouGotIt · Fitness</div>
+        <div class="copy-card" style="border-top: 2px solid #e07c4a;">
+          <div class="copy-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#e07c4a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+          </div>
+          <div class="copy-card-brand" style="color: #e07c4a;">YouGotIt · Fitness</div>
           <div class="copy-card-headline">Just One Step</div>
           <div class="copy-card-sub">Your best version is waiting to meet you.</div>
           <div class="copy-card-section">
@@ -710,8 +730,11 @@
           </div>
         </div>
 
-        <div class="copy-card">
-          <div class="copy-card-brand">Raydiant · Skincare</div>
+        <div class="copy-card" style="border-top: 2px solid #d4a0c0;">
+          <div class="copy-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#d4a0c0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </div>
+          <div class="copy-card-brand" style="color: #d4a0c0;">Raydiant · Skincare</div>
           <div class="copy-card-headline">Your Skin Loves It. The Sun Doesn&rsquo;t.</div>
           <div class="copy-card-sub">Carefully curated to protect your skin from the sun.</div>
           <div class="copy-card-section">
@@ -728,6 +751,9 @@
           </div>
         </div>
 
+      </div>
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="copywriting/index.html" target="_blank" rel="noopener" class="btn btn-ghost">View All Copywriting</a>
       </div>
     </div>
 

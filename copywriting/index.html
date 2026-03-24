@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Brand Copywriting — Shruti Suddala</title>
+  <meta name="description" content="Brand copywriting samples by Shruti Suddala — persuasive short-form copy for fintech, lifestyle, fitness, and skincare brands."/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>S</text></svg>"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Karla:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+  <style>
+    :root {
+      --bg:       #0e0e0f;
+      --surface:  #151516;
+      --surface2: #1c1c1e;
+      --rule:     #2a2a2e;
+      --rule-lt:  #333338;
+      --ink:      #e8e4dc;
+      --ink-mid:  #ccc6bc;
+      --ink-dim:  #7a756b;
+      --white:    #f0ece4;
+      --accent:   #c8a96e;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      background: var(--bg); color: var(--ink);
+      line-height: 1.7; -webkit-font-smoothing: antialiased;
+      perspective: 1200px;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(14,14,15,0.94); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-inner {
+      max-width: 900px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem;
+    }
+    .nav-back {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink-mid);
+      text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--accent); }
+    .nav-back::before { content: '\2190'; }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 600;
+      color: var(--white); text-decoration: none; letter-spacing: 0.03em;
+    }
+
+    /* PAGE */
+    .page-wrap { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+
+    /* HEADER */
+    .page-header {
+      padding: 9rem 0 4rem; text-align: center;
+      border-bottom: 1px solid var(--rule);
+    }
+    .page-kicker {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+    .page-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 600; line-height: 1.1; letter-spacing: -0.02em;
+      color: var(--white); margin-bottom: 1.2rem;
+    }
+    .page-title em { font-style: italic; font-weight: 400; color: var(--accent); }
+    .page-desc {
+      font-size: 1.05rem; color: var(--ink-mid); font-weight: 400;
+      max-width: 560px; margin: 0 auto; line-height: 1.8;
+      text-align: justify;
+    }
+
+    /* ── 3D CARD STACK ── */
+    .card-track {
+      padding: 5rem 0 6rem;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 4rem;
+    }
+
+    .card-3d {
+      width: 100%; max-width: 760px;
+      perspective: 1000px;
+      opacity: 0;
+      transform: translateY(60px) rotateX(8deg) scale(0.92);
+      transition: opacity 0.9s cubic-bezier(0.23, 1, 0.32, 1),
+                  transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .card-3d.visible {
+      opacity: 1;
+      transform: translateY(0) rotateX(0deg) scale(1);
+    }
+    /* stagger */
+    .card-3d:nth-child(2) { transition-delay: 0.08s; }
+    .card-3d:nth-child(3) { transition-delay: 0.16s; }
+    .card-3d:nth-child(4) { transition-delay: 0.24s; }
+
+    .card-inner {
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3);
+      transition: box-shadow 0.4s ease, transform 0.4s ease;
+    }
+    .card-3d.visible .card-inner {
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .card-inner:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 40px 100px rgba(0,0,0,0.5), 0 6px 16px rgba(0,0,0,0.3);
+    }
+
+    /* Card top band */
+    .card-top {
+      padding: 2.5rem 3rem 2rem;
+      display: flex; align-items: center; gap: 1.5rem;
+      position: relative; overflow: hidden;
+    }
+    .card-top::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--surface2); opacity: 0.5;
+    }
+    .card-top-icon {
+      width: 56px; height: 56px; border-radius: 50%;
+      border: 1px solid var(--rule-lt); background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; position: relative; z-index: 1;
+    }
+    .card-top-icon svg { width: 26px; height: 26px; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .card-top-text { position: relative; z-index: 1; }
+    .card-top-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; font-weight: 600; color: var(--white);
+      line-height: 1.1; letter-spacing: -0.01em;
+    }
+    .card-top-industry {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; margin-top: 0.25rem;
+    }
+    .card-top-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem; font-weight: 600; color: var(--rule);
+      position: absolute; right: 2.5rem; top: 50%; transform: translateY(-50%);
+      line-height: 1; opacity: 0.3; z-index: 0;
+    }
+
+    /* Card body */
+    .card-body { padding: 2rem 3rem 2.5rem; }
+    .card-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 600; line-height: 1.25;
+      color: var(--white); margin-bottom: 0.4rem;
+    }
+    .card-sub {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.95rem; font-weight: 400; font-style: italic;
+      color: var(--ink-mid); line-height: 1.7; margin-bottom: 1.8rem;
+    }
+
+    .card-blocks { display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 1.8rem; }
+    .card-block-label {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--ink-dim);
+      margin-bottom: 0.35rem;
+    }
+    .card-block-text {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.92rem; font-weight: 400; color: var(--ink-mid);
+      line-height: 1.7; text-align: justify;
+    }
+
+    .card-cta {
+      border-top: 1px solid var(--rule); padding-top: 1.2rem;
+      display: flex; align-items: baseline; gap: 1rem;
+    }
+    .card-cta-label {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink-dim);
+    }
+    .card-cta-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; font-weight: 600; font-style: italic;
+    }
+
+    /* FOOTER */
+    .page-footer {
+      border-top: 1px solid var(--rule); padding: 2rem 0 4rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .page-footer a {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--ink-mid);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .page-footer a:hover { color: var(--accent); }
+    .page-footer span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem; color: var(--ink-dim); font-style: italic;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .card-top { padding: 1.8rem 1.5rem 1.4rem; }
+      .card-body { padding: 1.5rem 1.5rem 2rem; }
+      .card-blocks { gap: 1rem; }
+      .card-top-brand { font-size: 1.4rem; }
+      .card-top-num { font-size: 3.5rem; right: 1.5rem; }
+      .card-top-icon { width: 44px; height: 44px; }
+      .card-top-icon svg { width: 20px; height: 20px; }
+      .page-wrap { padding: 0 1.2rem; }
+      .card-track { gap: 3rem; padding: 3rem 0 4rem; }
+      .card-3d { transform: translateY(40px) rotateX(4deg) scale(0.95); }
+      .card-headline { font-size: 1.3rem; }
+    }
+    @media (max-width: 600px) {
+      .page-header { padding: 7rem 0 3rem; }
+      .page-wrap { padding: 0 1rem; }
+      .card-track { gap: 2.5rem; padding: 2.5rem 0 4rem; }
+    }
+    @media (max-width: 480px) {
+      .card-top { padding: 1.5rem 1.2rem 1.2rem; }
+      .card-top-icon { width: 40px; height: 40px; flex-shrink: 0; }
+      .card-top-icon svg { width: 18px; height: 18px; }
+      .card-body { padding: 1.2rem 1.2rem 1.8rem; }
+      .card-top-brand { font-size: 1.2rem; }
+      .card-top-num { opacity: 0; }
+      .card-headline { font-size: 1.15rem; }
+      .card-sub { font-size: 0.88rem; }
+      .card-block-text { font-size: 0.88rem; }
+      .card-cta-text { font-size: 1rem; }
+      .card-3d { transform: translateY(30px) rotateX(2deg) scale(0.97); }
+      .card-inner { box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-back">Portfolio</a>
+    <a href="../index.html" class="nav-logo">Shruti Suddala</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <header class="page-header">
+    <div class="page-kicker">Copywriting Samples</div>
+    <h1 class="page-title">Brand <em>Copywriting</em></h1>
+    <p class="page-desc">
+      Short-form persuasive copy crafted for fictional brands across fintech, lifestyle,
+      fitness, and skincare &mdash; showcasing tone adaptability, audience awareness,
+      and clear messaging.
+    </p>
+  </header>
+
+  <div class="card-track">
+
+    <!-- 01 SpendWise -->
+    <div class="card-3d">
+      <div class="card-inner" style="border-top: 2px solid #4eca8b;">
+        <div class="card-top">
+          <div class="card-top-icon">
+            <svg viewBox="0 0 24 24" stroke="#4eca8b"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div class="card-top-text">
+            <div class="card-top-brand">SpendWise</div>
+            <div class="card-top-industry" style="color: #4eca8b;">Fintech</div>
+          </div>
+          <div class="card-top-num">01</div>
+        </div>
+        <div class="card-body">
+          <div class="card-headline">Take Care of Your Money, Like It Takes Care of You</div>
+          <div class="card-sub">Your personal CA, built right into an app &mdash; no effort, no confusion.</div>
+          <div class="card-blocks">
+            <div>
+              <div class="card-block-label">Problem</div>
+              <div class="card-block-text">Manual tracking is boring. Budgeting apps are complicated. So you end up doing&hellip; nothing.</div>
+            </div>
+            <div>
+              <div class="card-block-label">Solution</div>
+              <div class="card-block-text">SpendWise acts like your in-app CA &mdash; automatically tracking, organizing, and guiding your spending without the extra work.</div>
+            </div>
+          </div>
+          <div class="card-cta">
+            <span class="card-cta-label">CTA</span>
+            <span class="card-cta-text" style="color: #4eca8b;">&ldquo;Start Smarter Spending&rdquo;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 FirstSip -->
+    <div class="card-3d">
+      <div class="card-inner" style="border-top: 2px solid #c4956a;">
+        <div class="card-top">
+          <div class="card-top-icon">
+            <svg viewBox="0 0 24 24" stroke="#c4956a"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <div class="card-top-text">
+            <div class="card-top-brand">FirstSip</div>
+            <div class="card-top-industry" style="color: #c4956a;">Lifestyle</div>
+          </div>
+          <div class="card-top-num">02</div>
+        </div>
+        <div class="card-body">
+          <div class="card-headline">Say Hello to Better Mornings</div>
+          <div class="card-sub">Start your day with a cup that wakes you up, resets your mood, and gets you going.</div>
+          <div class="card-blocks">
+            <div>
+              <div class="card-block-label">Problem</div>
+              <div class="card-block-text">Snoozed alarms, scattered thoughts, and no time to breathe. Before the day takes over, FirstSip is that one moment that brings you back.</div>
+            </div>
+            <div>
+              <div class="card-block-label">Solution</div>
+              <div class="card-block-text">FirstSip turns rushed mornings into a calm, focused start.</div>
+            </div>
+          </div>
+          <div class="card-cta">
+            <span class="card-cta-label">CTA</span>
+            <span class="card-cta-text" style="color: #c4956a;">&ldquo;Take a Sip&rdquo;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 YouGotIt -->
+    <div class="card-3d">
+      <div class="card-inner" style="border-top: 2px solid #e07c4a;">
+        <div class="card-top">
+          <div class="card-top-icon">
+            <svg viewBox="0 0 24 24" stroke="#e07c4a"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+          </div>
+          <div class="card-top-text">
+            <div class="card-top-brand">YouGotIt</div>
+            <div class="card-top-industry" style="color: #e07c4a;">Fitness</div>
+          </div>
+          <div class="card-top-num">03</div>
+        </div>
+        <div class="card-body">
+          <div class="card-headline">Just One Step</div>
+          <div class="card-sub">Your best version is waiting to meet you.</div>
+          <div class="card-blocks">
+            <div>
+              <div class="card-block-label">Problem</div>
+              <div class="card-block-text">It only takes one step. So why haven&rsquo;t you taken it yet?</div>
+            </div>
+            <div>
+              <div class="card-block-label">Solution</div>
+              <div class="card-block-text">YouGotIt helps you take that first step and keeps you going, one step at a time, until you meet your best version.</div>
+            </div>
+          </div>
+          <div class="card-cta">
+            <span class="card-cta-label">CTA</span>
+            <span class="card-cta-text" style="color: #e07c4a;">&ldquo;Begin Now&rdquo;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04 Raydiant -->
+    <div class="card-3d">
+      <div class="card-inner" style="border-top: 2px solid #d4a0c0;">
+        <div class="card-top">
+          <div class="card-top-icon">
+            <svg viewBox="0 0 24 24" stroke="#d4a0c0"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </div>
+          <div class="card-top-text">
+            <div class="card-top-brand">Raydiant</div>
+            <div class="card-top-industry" style="color: #d4a0c0;">Skincare</div>
+          </div>
+          <div class="card-top-num">04</div>
+        </div>
+        <div class="card-body">
+          <div class="card-headline">Your Skin Loves It. The Sun Doesn&rsquo;t.</div>
+          <div class="card-sub">Carefully curated to protect your skin from the sun.</div>
+          <div class="card-blocks">
+            <div>
+              <div class="card-block-label">Problem</div>
+              <div class="card-block-text">It&rsquo;s never &ldquo;just a little sun.&rdquo; Your skin remembers it all.</div>
+            </div>
+            <div>
+              <div class="card-block-label">Solution</div>
+              <div class="card-block-text">So effortless, it becomes a step you never skip.</div>
+            </div>
+          </div>
+          <div class="card-cta">
+            <span class="card-cta-label">CTA</span>
+            <span class="card-cta-text" style="color: #d4a0c0;">&ldquo;Make It Part of Your Routine&rdquo;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <a href="../index.html">&larr; Back to Portfolio</a>
+    <span>Written by Shruti Suddala</span>
+  </div>
+
+</div>
+
+<script>
+  const cards = document.querySelectorAll('.card-3d');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  cards.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
