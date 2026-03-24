@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Copywriting Cards — Color Accent Test</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Karla:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:       #0e0e0f;
+      --surface:  #151516;
+      --surface2: #1c1c1e;
+      --rule:     #2a2a2e;
+      --rule-lt:  #333338;
+      --ink:      #e8e4dc;
+      --ink-mid:  #a09a90;
+      --ink-dim:  #5c5850;
+      --white:    #f0ece4;
+      --accent:   #c8a96e;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      background: var(--bg); color: var(--ink);
+      line-height: 1.7; padding: 4rem 2rem;
+      display: flex; flex-direction: column; align-items: center;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem; font-weight: 600; color: var(--white);
+      margin-bottom: 0.5rem; text-align: center;
+    }
+    h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
+    .subtitle {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.82rem; color: var(--ink-dim);
+      margin-bottom: 3rem; text-align: center;
+    }
+
+    .copy-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.2rem; max-width: 1060px; width: 100%;
+    }
+
+    /* ── BASE CARD ── */
+    .copy-card {
+      background: var(--surface); border: 1px solid var(--rule);
+      padding: 1.8rem; position: relative;
+      transition: border-color 0.25s, background 0.25s;
+      border-top: 3px solid var(--card-accent, var(--rule));
+    }
+    .copy-card:hover { border-color: var(--rule-lt); background: var(--surface2); }
+
+    /* ── BRAND COLOR ACCENTS ── */
+    .copy-card--fintech  { --card-accent: #4ade80; }  /* green */
+    .copy-card--lifestyle { --card-accent: #a0826d; } /* warm brown */
+    .copy-card--fitness  { --card-accent: #fb923c; }  /* orange */
+    .copy-card--skincare { --card-accent: #f9a8d4; }  /* pink */
+
+    .copy-card-brand {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--card-accent, var(--accent));
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .copy-card-brand::before {
+      content: ''; width: 16px; height: 1px; background: var(--card-accent, var(--accent));
+    }
+    .copy-card-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem; font-weight: 600; line-height: 1.25;
+      color: var(--white); margin-bottom: 0.5rem;
+    }
+    .copy-card-sub {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.88rem; font-weight: 300; font-style: italic;
+      color: var(--ink-mid); line-height: 1.6; margin-bottom: 1.2rem;
+    }
+    .copy-card-section { margin-bottom: 0.8rem; }
+    .copy-card-section:last-of-type { margin-bottom: 0; }
+    .copy-card-label {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink-dim);
+      margin-bottom: 0.25rem;
+    }
+    .copy-card-text {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.88rem; font-weight: 300; color: var(--ink-mid);
+      line-height: 1.65; text-align: justify;
+    }
+    .copy-card-cta {
+      margin-top: 1.2rem; padding-top: 1rem;
+      border-top: 1px solid var(--rule);
+    }
+    .copy-card-cta-label {
+      font-family: 'Karla', sans-serif;
+      font-size: 0.58rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink-dim);
+      margin-bottom: 0.3rem;
+    }
+    .copy-card-cta-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; font-weight: 600; font-style: italic;
+      color: var(--card-accent, var(--accent));
+    }
+
+    @media (max-width: 860px) {
+      .copy-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Brand Color <em>Accent Test</em></h1>
+  <p class="subtitle">Each card gets a subtle top border + brand color that reflects its industry. Delete this file after reviewing.</p>
+
+  <div class="copy-grid">
+
+    <div class="copy-card copy-card--fintech">
+      <div class="copy-card-brand">SpendWise &middot; Fintech</div>
+      <div class="copy-card-headline">Take Care of Your Money, Like It Takes Care of You</div>
+      <div class="copy-card-sub">Your personal CA, built right into an app &mdash; no effort, no confusion.</div>
+      <div class="copy-card-section">
+        <div class="copy-card-label">Problem</div>
+        <div class="copy-card-text">Manual tracking is boring. Budgeting apps are complicated. So you end up doing&hellip; nothing.</div>
+      </div>
+      <div class="copy-card-section">
+        <div class="copy-card-label">Solution</div>
+        <div class="copy-card-text">SpendWise acts like your in-app CA &mdash; automatically tracking, organizing, and guiding your spending without the extra work.</div>
+      </div>
+      <div class="copy-card-cta">
+        <div class="copy-card-cta-label">CTA</div>
+        <div class="copy-card-cta-text">&ldquo;Start Smarter Spending&rdquo;</div>
+      </div>
+    </div>
+
+    <div class="copy-card copy-card--lifestyle">
+      <div class="copy-card-brand">FirstSip &middot; Lifestyle</div>
+      <div class="copy-card-headline">Say Hello to Better Mornings</div>
+      <div class="copy-card-sub">Start your day with a cup that wakes you up, resets your mood, and gets you going.</div>
+      <div class="copy-card-section">
+        <div class="copy-card-label">Problem</div>
+        <div class="copy-card-text">Snoozed alarms, scattered thoughts, and no time to breathe. Before the day takes over, FirstSip is that one moment that brings you back.</div>
+      </div>
+      <div class="copy-card-section">
+        <div class="copy-card-label">Solution</div>
+        <div class="copy-card-text">FirstSip turns rushed mornings into a calm, focused start.</div>
+      </div>
+      <div class="copy-card-cta">
+        <div class="copy-card-cta-label">CTA</div>
+        <div class="copy-card-cta-text">&ldquo;Take a Sip&rdquo;</div>
+      </div>
+    </div>
+
+    <div class="copy-card copy-card--fitness">
+      <div class="copy-card-brand">YouGotIt &middot; Fitness</div>
+      <div class="copy-card-headline">Just One Step</div>
+      <div class="copy-card-sub">Your best version is waiting to meet you.</div>
+      <div class="copy-card-section">
+        <div class="copy-card-label">Problem</div>
+        <div class="copy-card-text">It only takes one step. So why haven&rsquo;t you taken it yet?</div>
+      </div>
+      <div class="copy-card-section">
+        <div class="copy-card-label">Solution</div>
+        <div class="copy-card-text">YouGotIt helps you take that first step and keeps you going, one step at a time, until you meet your best version.</div>
+      </div>
+      <div class="copy-card-cta">
+        <div class="copy-card-cta-label">CTA</div>
+        <div class="copy-card-cta-text">&ldquo;Begin Now&rdquo;</div>
+      </div>
+    </div>
+
+    <div class="copy-card copy-card--skincare">
+      <div class="copy-card-brand">Raydiant &middot; Skincare</div>
+      <div class="copy-card-headline">Your Skin Loves It. The Sun Doesn&rsquo;t.</div>
+      <div class="copy-card-sub">Carefully curated to protect your skin from the sun.</div>
+      <div class="copy-card-section">
+        <div class="copy-card-label">Problem</div>
+        <div class="copy-card-text">It&rsquo;s never &ldquo;just a little sun.&rdquo; Your skin remembers it all.</div>
+      </div>
+      <div class="copy-card-section">
+        <div class="copy-card-label">Solution</div>
+        <div class="copy-card-text">So effortless, it becomes a step you never skip.</div>
+      </div>
+      <div class="copy-card-cta">
+        <div class="copy-card-cta-label">CTA</div>
+        <div class="copy-card-cta-text">&ldquo;Make It Part of Your Routine&rdquo;</div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
