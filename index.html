@@ -116,8 +116,7 @@
     /* ── HERO ── */
     #profile { padding: 9rem 0 6rem; border-bottom: 1px solid var(--rule); }
     .hero-grid {
-      display: grid; grid-template-columns: 1fr 320px;
-      gap: 5rem; align-items: end;
+      display: flex; flex-direction: column;
     }
     .hero-kicker {
       font-family: 'Karla', sans-serif;
@@ -138,7 +137,7 @@
     .hero-name em { font-style: italic; font-weight: 400; color: var(--accent); }
     .hero-summary {
       font-size: 1.05rem; line-height: 1.85;
-      color: var(--ink-mid); max-width: 560px;
+      color: var(--ink-mid); max-width: 650px;
       margin-bottom: 2.4rem; font-weight: 300;
       text-align: justify;
     }
@@ -156,32 +155,31 @@
     .btn-ghost { background: transparent; color: var(--ink-mid); border: 1px solid var(--rule-lt); }
     .btn-ghost:hover { border-color: var(--ink-mid); color: var(--white); }
 
-    /* Hero aside */
-    .profile-photo-box {
-      width: 100%; aspect-ratio: 3/4;
-      background: var(--surface2); border: 1px solid var(--rule-lt);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 0.8rem;
-      color: var(--ink-dim); font-family: 'Karla', sans-serif;
-      font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
-      margin-bottom: 1.4rem;
+    /* Hero meta inline */
+    .hero-meta {
+      display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem;
+      margin-bottom: 2.4rem;
+      font-family: 'Karla', sans-serif; font-size: 0.88rem;
+      color: var(--ink); font-weight: 500; letter-spacing: 0.01em;
     }
-    .photo-icon {
-      width: 44px; height: 44px;
-      border: 1px solid var(--rule-lt); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem; color: var(--ink-dim);
+    .hero-meta .dot {
+      width: 4px; height: 4px; border-radius: 50%;
+      background: var(--accent); margin: 0 0.6rem;
     }
-    .profile-meta { display: flex; flex-direction: column; }
-    .meta-row {
-      display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
-      padding: 0.65rem 0; border-bottom: 1px solid var(--rule);
-      font-family: 'Karla', sans-serif;
+    .hero-meta .avail {
+      color: var(--accent); font-weight: 600;
+      display: inline-flex; align-items: center; gap: 0.45rem;
     }
-    .meta-row:last-child { border-bottom: none; }
-    .meta-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-dim); }
-    .meta-value { font-size: 0.82rem; color: var(--ink-mid); font-weight: 500; }
-    .meta-available { color: var(--accent); font-weight: 600; }
+    .hero-meta .avail::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
 
     /* ── SECTION COMMONS ── */
     .section-wrap { padding: 5rem 0; border-bottom: 1px solid var(--rule); }
@@ -488,9 +486,6 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 860px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .hero-aside { display: grid; grid-template-columns: 160px 1fr; gap: 1.5rem; align-items: start; }
-      .profile-photo-box { aspect-ratio: 1/1; }
       .section-header, .exp-item { grid-template-columns: 1fr; gap: 0.8rem; }
       .section-header { margin-bottom: 2rem; }
       .skills-grid { grid-template-columns: 1fr; }
@@ -511,17 +506,16 @@
       .mobile-menu { display: flex; }
       .nav-inner { padding: 1rem 1.2rem; }
       .page-wrap { padding: 0 1.2rem; }
-      .hero-aside { grid-template-columns: 1fr; }
-      .profile-photo-box { aspect-ratio: 3/4; max-width: 200px; margin: 0 auto; }
+      .hero-meta { font-size: 0.78rem; gap: 0.3rem; }
+      .hero-meta .dot { margin: 0 0.4rem; }
+      .hero-name { font-size: 2.8rem; }
       .stats-row { grid-template-columns: 1fr 1fr; }
-      .stat-figure { font-size: 1.8rem; }
+      .stat-figure { font-size: 1.6rem; }
+      .stat-cell { padding: 1.2rem 1rem; }
       .copy-card-headline { font-size: 1.15rem; }
       .article-item { grid-template-columns: 1fr; }
       .article-num { display: none; }
       .exp-item { gap: 0.5rem; }
-      .stat-cell { padding: 1.2rem 1rem; }
-      .stat-figure { font-size: 1.6rem; }
-      .meta-row { flex-direction: column; gap: 0.2rem; }
     }
   </style>
 </head>
@@ -564,41 +558,25 @@
     <div class="hero-grid">
       <div class="hero-text">
         <div class="hero-kicker">Content Writer &amp; Researcher</div>
-        <h1 class="hero-name">Shruti<br><em>Suddala</em></h1>
+        <h1 class="hero-name">Shruti <em>Suddala</em></h1>
         <p class="hero-summary">
           Research-driven content writer specialising in <strong>data breach litigation,
           consumer rights, and cybersecurity</strong>. With a prior career in fraud
           investigation, I bring forensic precision and analytical depth to every article —
           translating complex legal and technical subject matter into clear, authoritative writing.
         </p>
+        <div class="hero-meta">
+          <span>India</span>
+          <span class="dot"></span>
+          <span>Legal &amp; Cyber Content</span>
+          <span class="dot"></span>
+          <span>4+ Years Experience</span>
+          <span class="dot"></span>
+          <span class="avail">Available for Work</span>
+        </div>
         <div class="hero-actions">
           <a href="#work" class="btn btn-primary">View Selected Work</a>
           <a href="#contact" class="btn btn-ghost">Get In Touch</a>
-        </div>
-      </div>
-
-      <div class="hero-aside reveal">
-        <div class="profile-photo-box">
-          <div class="photo-icon">◯</div>
-          <span>Photo Placeholder</span>
-        </div>
-        <div class="profile-meta">
-          <div class="meta-row">
-            <span class="meta-label">Based in</span>
-            <span class="meta-value">India</span>
-          </div>
-          <div class="meta-row">
-            <span class="meta-label">Speciality</span>
-            <span class="meta-value">Legal &amp; Cyber Content</span>
-          </div>
-          <div class="meta-row">
-            <span class="meta-label">Experience</span>
-            <span class="meta-value">4+ Years</span>
-          </div>
-          <div class="meta-row">
-            <span class="meta-label">Status</span>
-            <span class="meta-value meta-available">Available</span>
-          </div>
         </div>
       </div>
     </div>
